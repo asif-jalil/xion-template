@@ -1,0 +1,87 @@
+mixin Navbar 
+  .sticky-top.navbar-elixir
+    .container 
+      nav.navbar.navbar-expand-lg 
+        a.navbar-brand(href='index.html')
+          img(src=`${CWD}assets/img/logo-dark.png` alt="")
+        button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarNavDropdown' aria-controls='navbarNavDropdown' aria-expanded='false' aria-label='Toggle navigation')
+          .hamburger.hamburger--emphatic
+            .hamburger-box
+              .hamburger-inner
+        #navbarNavDropdown.collapse.navbar-collapse
+          ul.navbar-nav.fs-0.fw-bold
+            li.nav-item.dropdown
+              a.nav-link.dropdown-toggle.dropdown-indicator(href='JavaScript:void(0)' role="button" data-bs-toggle="dropdown" aria-expanded="false") Home
+              ul.dropdown-menu.mt-n1(aria-labelledby='navbarDropdown')
+                li
+                  a.dropdown-item(href="/index.html") Slider Header
+                li
+                  a.dropdown-item(href="index--header-slider-classic.html") Slider Classic
+                li
+                  a.dropdown-item(href="index--header-static.html") Static Header
+                li
+                  a.dropdown-item(href="index--header-static-classic.html") Static Classic
+                li
+                  a.dropdown-item(href="index--header-youtube-video.html") Youtube Background 
+                li
+                  a.dropdown-item(href="index--header-youtube-video-classic.html") Youtube Classic
+                li
+                  a.dropdown-item(href="index--header-selfhosted-video.html") Self-hosted Video
+                li
+                  a.dropdown-item(href="index--header-selfhosted-video-classic.html") Self-hosted Classic
+
+            li.nav-item.dropdown
+              a.nav-link.dropdown-toggle.dropdown-indicator(href='JavaScript:void(0)' role="button" data-bs-toggle="dropdown" aria-expanded="false") Pages
+              ul.dropdown-menu.mt-n1(aria-labelledby='navbarDropdown')
+                li
+                  a.dropdown-item(href="services.html") Services
+                li
+                  a.dropdown-item(href="about.html") About
+                li
+                  a.dropdown-item(href="alumni.html") Alumni
+                li
+                  a.dropdown-item(href="blank.html") Blank Page
+                li
+                  a.dropdown-item(href="404.html") 404 Page
+                li
+                  a.dropdown-item(href="login.html") Login
+                li
+                  a.dropdown-item(href="registration.html") Registration
+
+            li.nav-item.dropdown
+              a.nav-link.dropdown-toggle.dropdown-indicator(href='JavaScript:void(0)' role="button" data-bs-toggle="dropdown" aria-expanded="false") News
+              ul.dropdown-menu.mt-n1(aria-labelledby='navbarDropdown')
+                li
+                  a.dropdown-item(href="newsroom.html") Newsroom
+                li
+                  a.dropdown-item(href="news.html") Single News
+
+            li.nav-item.dropdown
+              a.nav-link.dropdown-toggle.dropdown-indicator(href='JavaScript:void(0)' role="button" data-bs-toggle="dropdown" aria-expanded="false") Elements
+              ul.dropdown-menu.mt-n1(aria-labelledby='navbarDropdown')
+                li
+                  a.dropdown-item(href="/elements/buttons.html") Buttons
+                li
+                  a.dropdown-item(href="/elements/colors.html") Colors
+                li
+                  a.dropdown-item(href="/elements/googlemap.html") Google Map
+                li
+                  a.dropdown-item(href="/elements/grid.html") Grid
+                li
+                  a.dropdown-item(href="/elements/icons.html") Icons
+                li
+                  a.dropdown-item(href="/elements-layouthelpers.html") Layout Helpers
+                li
+                  a.dropdown-item(href="/elements/modal-video.html") Modal Video
+                li
+                  a.dropdown-item(href="/elements/swiper.html") Swiper
+                li
+                  a.dropdown-item(href="/elements/slider.html") Slider
+                li
+                  a.dropdown-item(href="/elements/typography.html") Typography
+
+            li.nav-item
+              a.nav-link(href='contact.html').d-block.mr-md-9 Contact
+          ul.navbar-nav.ms-lg-auto 
+            li.nav-item
+              a(href='https://themewagon.com/themes/elixir/' target="_blank").btn.btn-outline-primary.rounded-pill.btn-sm.border-2.fw-bold Purchase

@@ -25,26 +25,3 @@ td .dropdown-toggle {
   overflow: hidden;
   th{ border-bottom-width: 1px !important; }
 }
-
-
-// .table {
-//   --#{$variable-prefix}table-bg: #{$table-bg};
-//   --#{$variable-prefix}table-accent-bg: transparent;
-//   --#{$variable-prefix}table-striped-color: #{$table-striped-color};
-//   --#{$variable-prefix}table-striped-bg: #{map-get($grays, '100')};
-//   --#{$variable-prefix}table-active-color: #{$table-active-color};
-//   --#{$variable-prefix}table-active-bg: #{$table-active-bg};
-//   --#{$variable-prefix}table-hover-color: #{$table-hover-color};
-//   --#{$variable-prefix}table-hover-bg: #{$table-hover-bg};
-// }
-
-// .dark .table {
-//   --#{$variable-prefix}table-bg: #{$table-bg};
-//   --#{$variable-prefix}table-accent-bg: transparent;
-//   --#{$variable-prefix}table-striped-color: #{$table-striped-color};
-//   --#{$variable-prefix}table-striped-bg: #{map-get($dark-grays, '100')};
-//   --#{$variable-prefix}table-active-color: #{$table-active-color};
-//   --#{$variable-prefix}table-active-bg: #{$table-active-bg};
-//   --#{$variable-prefix}table-hover-color: #{$table-hover-color};
-//   --#{$variable-prefix}table-hover-bg: #{$table-hover-bg};
-// }

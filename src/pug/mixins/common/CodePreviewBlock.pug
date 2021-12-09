@@ -1,0 +1,39 @@
+mixin CodePreviewBlock(config)
+  - var blocks = {}
+
+  mixin Blocks(key)
+    - blocks[key] = block 
+
+  - block()
+
+  if blocks.preview 
+    +PreviewBlock(config)
+      - blocks.preview()
+  if blocks.code 
+    +CodeBlock(config)
+      - blocks.code()
+
+mixin PreviewBlock(config={})
+  .mb-5&attributes(attributes) 
+    if config.title || config.desc 
+      .pb-3
+        if config.title
+          h5(class=`${config.titleClass || ''}`)= config.title 
+        if config.desc
+          p(class=`${config.descClass || ''}`)!=config.desc
+    div(class=`${config.previewClass || ''}`) 
+      block
+
+
+mixin CodeBlock(config)
+  - config = Object.assign({lang: 'html'}, config)
+
+  if config.codeTitle
+    h5.mt-5(class=`${config.codeTitleClass || ''}`)=config.codeTitle
+  if config.codeDesc
+    p(class=`${config.codeDescClass || ''}`)!=config.codeDesc
+  .mb-5&attributes(attributes)
+    pre
+      code(class=`language-${config.lang}`)
+        +escape
+          block

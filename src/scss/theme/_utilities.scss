@@ -284,11 +284,11 @@ $utilities: map_merge(
           )
         ),
     ),
-    "background-soft-color": (
-      property: background-color,
-      class: bg-soft,
-      values: $theme-colors-soft
-    ),
+    // "background-soft-color": (
+    //   property: background-color,
+    //   class: bg-soft,
+    //   values: $theme-colors-soft
+    // ),
     "translate-middle": (
       property: transform,
       class: translate,

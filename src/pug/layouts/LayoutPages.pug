@@ -1,0 +1,18 @@
+extends LayoutTheme
+include ../mixins/common/TopBar
+include ../mixins/navbar/Navbar
+include ../mixins/common/PageHeader
+
+append variables 
+  - var pageHeaderConfig = {}
+
+prepend styles
+  link(href=`${CWD}vendors/prism/prism.css`, rel='stylesheet')
+
+prepend scripts
+  script(src=`${CWD}vendors/prism/prism.js`)
+
+block beforeMainContent
+  +TopBar
+  +Navbar
+  +PageHeader(pageHeaderConfig)

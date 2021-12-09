@@ -1,47 +1,102 @@
+@use 'sass:math';
 /*-----------------------------------------------
 |   Button
 -----------------------------------------------*/
-
+.btn{
+  letter-spacing: .01rem;
+}
 
 /*-----------------------------------------------
-|   Button Reveal
+|   Icon Button
 -----------------------------------------------*/
-.btn-reveal-trigger {
-  @include hover-focus {
-    .btn-reveal {
-      box-shadow: $btn-reveal-hover-shadow;
-      &:hover,
-      &:focus,
-      &:active{
-        color: var(--#{$variable-prefix}btn-reveal-color) !important;
-      }
+@mixin icon-button-variant($padding-x, $icon-width) {
+  padding-left: math.div($padding-x, 2.5) + $icon-width;
+  &.btn-icon-right {
+      padding-left: $padding-x;
+      padding-right: math.div($padding-x, 2.5) + $icon-width;
+  }
+  span,svg {
+      width: $icon-width;
+      font-size: math.div($icon-width, 2);
+  }
+}// end icon-button-variant
+
+.btn-icon {
+  @include icon-button-variant(2.5rem ,2.6rem);
+  position: relative;
+  
+  .btn-icon-wrapper {
+      left: 0;
+      top: 0;
+      height: 100%;
+      position: absolute;
+      background-color: rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+  &.btn-icon-left {
+     .btn-icon-wrapper {
+        left: 0; margin-right: 1rem; 
+      } 
     }
 
-    .btn-reveal-sm {
-      box-shadow: var(--falcon-box-shadow-sm);
-    }
+  &.btn-icon-right {
+    .btn-icon-wrapper {
+          right: 0;
+          left: auto;
+          margin-left: 1rem;
+      }
   }
-  .btn-reveal {
-    &:active:focus,
-    &:active,
-    &:focus {
-      box-shadow: none;
-      color: var(--#{$variable-prefix}btn-reveal-color) !important;
-      background-color: var(--#{$variable-prefix}btn-reveal-bg);
-      border-color: var(--#{$variable-prefix}btn-reveal-border-color);
-    }
+
+  &.rounded-pill {
+      &.btn-icon-left {
+         .btn-icon-wrapper {
+            border-radius: $border-radius-pill 0 0 $border-radius-pill; 
+          } 
+        }
+      &.btn-icon-right {
+         .btn-icon-wrapper {
+            border-radius: 0 $border-radius-pill $border-radius-pill 0; 
+          } 
+        }
   }
-  .dropdown-toggle {
-    &:after, &:before {
-      display: none;
+
+  &.btn-sm {
+     @include icon-button-variant(0.4rem, 2.5rem); 
     }
+
+  &.btn-lg {
+     @include icon-button-variant(4rem, 4rem); 
+    }
+
+  &[class*='btn-outline-'] {
+      .btn-icon-wrapper {
+          background-color: transparent;
+          border-right-width: 1px;
+          border-right-style: solid;
+      }
+      @include hover-focus{
+        .btn-icon-wrapper {
+          background-color: rgba(0,0,0,0.1);
+          border-right-color: rgba(0,0,0,0.1);
+      }
+      }
+      &.btn-icon-right {
+          .btn-icon-wrapper {
+              border-left-width: 1px;
+              border-left-style: solid;
+              border-right: none;
+          }
+      }
   }
 }
+
 
 /*-----------------------------------------------
 |   Falcon buttons
 -----------------------------------------------*/
-$theme-falcon-btn-colors: (
+$theme-btn-colors: (
   "primary": $primary,
   "success": $success,
   "info": $info,
@@ -49,12 +104,6 @@ $theme-falcon-btn-colors: (
   "danger": $danger,
   "default": $dark,
 );
-
-@each $color, $value in $theme-falcon-btn-colors {
-  .btn-falcon-#{$color} {
-    @include falcon-button-variant($color);
-  }
-}
 
 /*-----------------------------------------------
 |   Brand Outline Buttons
@@ -67,6 +116,19 @@ $theme-falcon-btn-colors: (
 }
 .btn-outline-google-plus {
   @include button-outline-variant($google-plus);
+}
+
+.btn-facebook {
+  @include button-variant($facebook, $facebook);
+}
+.btn-twitter {
+  @include button-variant($twitter, $twitter);
+}
+.btn-google-plus {
+  @include button-variant($google-plus, $google-plus);
+}
+.btn-github {
+  @include button-variant($github, $github);
 }
 
 /*-----------------------------------------------
@@ -86,49 +148,4 @@ $theme-falcon-btn-colors: (
   }
 }
 
-/* -------------------------------------------------------------------------- */
-/*                                Dark override                               */
-/* -------------------------------------------------------------------------- */
-.dark {
-  .btn-light {
-    @extend .btn-dark;
-  }
-  .btn.disabled, .btn:disabled {
-    // box-shadow: none !important;
-    opacity: .5;
-  }
-}
 
-
-
-// Close Button
-
-.btn-close-falcon {
-  cursor: pointer;
-  position: relative;
-  width: 25px;
-  height: 25px;
-  opacity: 0.5;
-
-  &:hover {
-    opacity: 1;
-  }
-
-  &:after,
-  &:before {
-    position: absolute;
-    left: 12px;
-    top:4px;
-    content: ' ';
-    height: 16px;
-    width: 2px;
-    background-color: $gray-700;
-  }
-
-  &:after{
-    transform: rotate(-45deg);
-  }
-  &:before{
-    transform: rotate(45deg);
-  }
-}

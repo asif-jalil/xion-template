@@ -74,5 +74,21 @@ pre,
 code,
 kbd,
 samp {
-  font-size: $font-size-sm;
+  font-size: $font-size-sm !important;
+}
+
+a{
+  font-weight: $font-weight-semi-bold;
+}
+
+h1 {
+  letter-spacing: -.25rem;
+}
+
+h2, h3{
+  letter-spacing: -0.15rem;
+}
+
+h4, h5{
+  letter-spacing: -0.05rem;
 }

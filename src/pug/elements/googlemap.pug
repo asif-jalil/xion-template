@@ -1,0 +1,23 @@
+extends ../layouts/LayoutPages
+include ../mixins/elements/GoogleMap
+include ../mixins/common/BlockHeader
+include ../mixins/common/CodePreviewBlock
+
+prepend scripts
+  script(src!=`https://maps.googleapis.com/maps/api/js?key=${APIGmap}&callback=initMap` async)
+
+append variables 
+  - var pageHeaderConfig = { title: "Google Map" }
+
+append mainContent
+  +Section 
+    // Google Map
+    +GoogleMap 
+
+    // Map Color Scheme
+    +MapColorSchemesDemo
+
+    // Map Example
+    +Example
+
+

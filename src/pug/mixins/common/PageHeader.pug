@@ -1,14 +1,17 @@
 mixin PageHeader(config)
-  .card.mb-3
-    +Background({image: `${CWD}assets/img/icons/spot-illustrations/corner-4.png`, className: "d-none d-lg-block bg-card"})
-    .card-body.position-relative
-      .row
-        .col-lg-8
-          if config.title
-            h3(class=config.headerClass && config.headerClass data-anchor=config.dataAnchor)=config.title
-          if config.description
-            p.mb-0!=config.description
-          block
-          if config.url
-            a(href=config.url target='_blank').btn.btn-link.btn-sm.ps-0.mt-2=config.linkText
-              span.fas.fa-chevron-right.ms-1.fs--2
+  +Section(
+    { image: `${CWD}assets/img/${config.img || 'background-2.jpg'}`, className: "overlay", attrs: {style: {'background-position': 'center bottom'}}},
+    false
+  )
+    .container(style="top:30px")
+      .row.pt-6(data-inertia!={weight: 1.5})
+        //- Remove px-md-0 form col
+        .col-md-8.text-white(data-zanim-timeline!={} data-zanim-trigger="scroll")
+          .overflow-hidden
+            h1.text-white.fs-4.fs-md-5.mb-0.lh-1(data-zanim!={delay:0.0})= config.title
+            .nav(aria-label="breadcrumb" role="navigation" data-zanim!={delay:0.1})
+              //- Add ps-1 instead of ps-0
+              ol.breadcrumb.fs-1.ps-1.fw-bold
+                li.breadcrumb-item
+                  a(href="#").text-white Home
+                li.breadcrumb-item.active(aria-current="page")= config.title

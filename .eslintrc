@@ -1,24 +1,27 @@
 {
-  "extends": "airbnb-base",
-  "env": {
-    "es6": true,
-    "browser": true,
-    "jquery": true
-  },
-  "rules": {
-    "padded-blocks": "off",
-    "no-console": "off",
-    "no-unused-expressions": "off",
-    "spaced-comment": "off",
-    "comma-dangle": "off",
-    "function-paren-newline": "off",
-    "implicit-arrow-linebreak": "off",
-    "import/named": "off",
-    "import/no-extraneous-dependencies": "off",
-    "arrow-parens": "off",
-    "linebreak-style": "off"
-  },
-  "parserOptions": {
-    "ecmaVersion": 2020
-  }
+	"extends": "airbnb-base",
+	"env": {
+		"es6": true,
+		"browser": true,
+		"jquery": true
+	},
+	"rules": {
+		"import/extensions": "off",
+		"no-tabs": "off",
+		"indent": "off",
+		"padded-blocks": "off",
+		"no-console": "off",
+		"no-unused-expressions": "off",
+		"spaced-comment": "off",
+		"comma-dangle": "off",
+		"function-paren-newline": "off",
+		"implicit-arrow-linebreak": "off",
+		"import/named": "off",
+		"import/no-extraneous-dependencies": "off",
+		"arrow-parens": "off",
+		"linebreak-style": "off"
+	},
+	"parserOptions": {
+		"ecmaVersion": 2020
+	}
 }

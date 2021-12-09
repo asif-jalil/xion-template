@@ -4,7 +4,7 @@
 		"dest": "bootstrap"
 	},
 	"prismjs": {
-		"src": ["prism.js", "themes/prism-okaidia.css"],
+		"src": ["prism.js", "themes/prism.css"],
 		"dest": "prism"
 	},
 	"is_js": {

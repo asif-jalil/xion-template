@@ -3,7 +3,15 @@
 -----------------------------------------------*/
 .dropdown-menu {
   font-size: map_get($font-sizes, "-1");
-  border-radius: $border-radius-lg;
+  display: block;
+  opacity: 0;
+  visibility: hidden;
+  transition: $transition-base;
+}
+
+.dropdown-menu.show{
+  opacity: 1;
+  visibility: visible;
 }
 
 .dropdown-indicator {
@@ -12,12 +20,13 @@
     content: "";
     display: block;
     position: absolute;
-    right: 5px;
-    height: 0.4rem;
-    width: 0.4rem;
-    border-right: 1px solid $gray-700;
-    border-bottom: 1px solid $gray-700;
-    top: 50%;
+    right: 7px;
+    top: 47%;
+    height: 0.45rem;
+    width: 0.45rem;
+    border: none;
+    border-right: 2px solid $primary;
+    border-bottom: 2px solid $primary;
     transform: translateY(-50%) rotate(45deg);
     transition: $transition-base;
     transform-origin: center;
@@ -37,4 +46,7 @@
 .dropdown-md {
   min-width: 16.625rem;
 }
-  
+
+.dropdown-item{
+  font-weight: $font-weight-semi-bold;
+}

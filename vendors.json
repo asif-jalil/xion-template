@@ -46,5 +46,9 @@
 	"overlayscrollbars": {
 		"src": ["js/OverlayScrollbars.min.js", "css/OverlayScrollbars.min.css"],
 		"dest": "overlayscrollbars"
+	},
+	"bigpicture": {
+		"src": "dist/BigPicture.js",
+		"dest": "bigpicture"
 	}
 }

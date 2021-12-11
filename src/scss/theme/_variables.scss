@@ -83,7 +83,7 @@ $enable-gradients: false !default;
 $enable-negative-margins: true !default;
 
 
-// $component-active-color: var(--#{$variable-prefix}white) !default;
+$component-active-color: var(--#{$variable-prefix}primary) !default;
 // $component-active-bg: var(--#{$variable-prefix}primary) !default;
 
 //*-----------------------------------------------
@@ -225,6 +225,10 @@ $small-font-size: 75% !default;
 $text-muted: $gray-500 !default;
 
 $blockquote-font-size: $font-size-lg !default;
+
+$line-height-base:            1.5;
+$line-height-sm:              1.25;
+$line-height-lg:              1.75;
 
 //*-----------------------------------------------
 //|   Accordion

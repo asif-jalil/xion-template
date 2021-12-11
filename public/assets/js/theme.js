@@ -1763,6 +1763,30 @@ function initMap() {
 }
 /* -------------------------------------------------------------------------- */
 
+/*                                 bigPicture                                 */
+
+/* -------------------------------------------------------------------------- */
+
+
+var lightboxInit = function lightboxInit() {
+  if (window.BigPicture) {
+    var bpItems = document.querySelectorAll('[data-bigpicture]');
+    bpItems.forEach(function (bpItem) {
+      var userOptions = utils.getData(bpItem, 'bigpicture');
+      var defaultOptions = {
+        el: bpItem
+      };
+
+      var options = window._.merge(defaultOptions, userOptions);
+
+      bpItem.addEventListener('click', function () {
+        window.BigPicture(options);
+      });
+    });
+  }
+};
+/* -------------------------------------------------------------------------- */
+
 /*                         Navbar Darken on scroll                        */
 
 /* -------------------------------------------------------------------------- */
@@ -2000,7 +2024,7 @@ var swiperInit = function swiperInit() {
         slides += "\n          <div class='swiper-slide '>\n            <img class='img-fluid rounded mt-1' src=".concat(img.src, " alt=''/>\n          </div>\n        ");
       });
       var thumbs = document.createElement('div');
-      thumbs.setAttribute('class', 'swiper-container thumb');
+      thumbs.setAttribute('class', 'swiper thumb');
       thumbs.innerHTML = "<div class='swiper-wrapper'>".concat(slides, "</div>");
 
       if (thumbsOptions.parent) {
@@ -2113,4 +2137,5 @@ docReady(cookieNoticeInit);
 docReady(dropdownOnHover);
 docReady(scrollbarInit);
 docReady(dropdownMenuInit);
+docReady(lightboxInit);
 //# sourceMappingURL=theme.js.map

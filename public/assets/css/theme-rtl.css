@@ -281,15 +281,15 @@
   --elixir-form-check-input-bg: transparent;
   --elixir-form-check-input-border: 1px solid var(--elixir-form-check-input-border-color);
   --elixir-form-check-input-border-color: #bebebe;
-  --elixir-form-check-input-checked-color: #fff;
+  --elixir-form-check-input-checked-color: var(--elixir-primary);
   --elixir-form-check-input-checked-bg-color: #2A3855;
   --elixir-form-check-input-checked-border-color: #2A3855;
-  --elixir-form-check-input-indeterminate-color: #fff;
+  --elixir-form-check-input-indeterminate-color: var(--elixir-primary);
   --elixir-form-check-input-indeterminate-bg-color: #2A3855;
   --elixir-form-check-input-indeterminate-border-color: #2A3855;
   --elixir-form-switch-color:rgba(0, 0, 0, .25);
   --elixir-form-switch-focus-color: var(--elixir-input-focus-border-color);
-  --elixir-form-switch-checked-color: #fff;
+  --elixir-form-switch-checked-color: var(--elixir-primary);
   --elixir-input-group-addon-color: var(--elixir-input-border-color);
   --elixir-input-group-addon-bg: #f2f2f2;
   --elixir-input-group-addon-border-color: var(--elixir-input-border-color);
@@ -332,7 +332,7 @@
   --elixir-dropdown-link-color: #1f1f1f;
   --elixir-dropdown-link-hover-color: #121212;
   --elixir-dropdown-link-hover-bg: null;
-  --elixir-dropdown-link-active-color: #fff;
+  --elixir-dropdown-link-active-color: var(--elixir-primary);
   --elixir-dropdown-link-active-bg: null;
   --elixir-dropdown-link-disabled-color: #7F7F7F;
   --elixir-dropdown-header-color: #7F7F7F;
@@ -3208,15 +3208,15 @@ textarea.form-control-lg {
   border-color: #2A3855;
 }
 .form-check-input:checked[type=checkbox] {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='var%28--elixir-primary%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
 }
 .form-check-input:checked[type=radio] {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%23fff'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='var%28--elixir-primary%29'/%3e%3c/svg%3e");
 }
 .form-check-input[type=checkbox]:indeterminate {
   background-color: #2A3855;
   border-color: #2A3855;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='var%28--elixir-primary%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/%3e%3c/svg%3e");
 }
 .form-check-input:disabled {
   pointer-events: none;
@@ -3253,7 +3253,7 @@ textarea.form-control-lg {
 }
 .form-switch .form-check-input:checked {
   background-position: left center;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='var%28--elixir-primary%29'/%3e%3c/svg%3e");
 }
 
 .form-check-inline {
@@ -4845,7 +4845,7 @@ textarea.form-control-lg {
 }
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
-  color: #fff;
+  color: var(--elixir-primary);
   background-color: #2A3855;
 }
 
@@ -9053,7 +9053,7 @@ textarea.form-control-lg {
 }
 
 .lh-lg {
-  line-height: 2 !important;
+  line-height: 1.75 !important;
 }
 
 .text-start {
@@ -19848,7 +19848,7 @@ input[type=file].form-control-lg {
 }
 .list-group-item.active {
   z-index: 2;
-  color: #fff;
+  color: var(--elixir-primary);
   background-color: #2A3855;
   border-color: #2A3855;
 }

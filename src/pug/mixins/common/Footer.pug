@@ -1,11 +1,11 @@
 mixin Footer
-  footer.footer
-    .row.g-0.justify-content-between.fs--1.mt-4.mb-3
-      .col-12.col-sm-auto.text-center
-        p.mb-0.text-600 Thank you for creating with #{name} 
-          span.d-none.d-sm-inline-block | 
-          br.d-sm-none
-          |  #{ new Date().getFullYear() } &copy; 
-          a(href="https://themewagon.com") Themewagon
-      .col-12.col-sm-auto.text-center
-        p.mb-0.text-600=version
+  footer.footer.bg-primary.text-center.py-4
+    .container
+      .row.align-items-center(style="opacity: 0.85")
+        .col-sm-3.text-sm-start
+          a(href="index.html")
+            img(src=`${CWD}assets/img/logo-light.png` alt="logo")
+        .col-sm-6.mt-3.mt-sm-0
+          p.text-white.lh-lg.mb-0.fw-semi-bold &copy; Copyright 2018 Elixir Inc.
+        .col.text-sm-end.mt-3.mt-sm-0
+          a(href="https://themewagon.com/" target="_blank").text-white  Designed by Themewagon

@@ -1,20 +1,27 @@
 mixin CodePreviewBlock(config)
   - var blocks = {}
+  - config = Object.assign({combine: false}, config)
 
-  mixin Blocks(key)
-    - blocks[key] = block 
-
-  - block()
-
-  if blocks.preview 
+  if config.combine === true 
     +PreviewBlock(config)
-      - blocks.preview()
-  if blocks.code 
+      block
     +CodeBlock(config)
-      - blocks.code()
+      block
+  else 
+    mixin Blocks(key)
+      - blocks[key] = block 
+
+    - block()
+
+    if blocks.preview 
+      +PreviewBlock(config)
+        - blocks.preview()
+    if blocks.code 
+      +CodeBlock(config)
+        - blocks.code()
 
 mixin PreviewBlock(config={})
-  .mb-5&attributes(attributes) 
+  div(class=`${config.previewContainerClass || 'mb-5'}`)&attributes(attributes) 
     if config.title || config.desc 
       .pb-3
         if config.title
@@ -32,8 +39,11 @@ mixin CodeBlock(config)
     h5.mt-5(class=`${config.codeTitleClass || ''}`)=config.codeTitle
   if config.codeDesc
     p(class=`${config.codeDescClass || ''}`)!=config.codeDesc
-  .mb-5&attributes(attributes)
+  div(class=`${attributes.class || 'mb-5'}`)&attributes(attributes)
     pre
       code(class=`language-${config.lang}`)
-        +escape
+        if config.lang === 'css'
           block
+        else if config.lang === 'html'
+          +escape
+            block

@@ -1,5 +1,6 @@
 extends Layout
 include ../mixins/common/Logo
+include ../mixins/common/PreFooter
 include ../mixins/common/Footer
 include ../mixins/common/SettingsPanel
 include ../mixins/Variables
@@ -25,3 +26,5 @@ block beforeMainContent
 block mainContent
 
 block afterMainContent
+  +PreFooter
+  +Footer

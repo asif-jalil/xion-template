@@ -17,6 +17,7 @@ import cookieNoticeInit from './cookie-notice';
 import dropdownOnHover from './dropdown-on-hover';
 import scrollbarInit from './scrollbar';
 import dropdownMenuInit from './dropdown-menu';
+import lightboxInit from './lightbox';
 
 /* -------------------------------------------------------------------------- */
 /*                            Theme Initialization                            */
@@ -45,3 +46,4 @@ docReady(dropdownOnHover);
 docReady(scrollbarInit);
 
 docReady(dropdownMenuInit);
+docReady(lightboxInit);

@@ -17,8 +17,7 @@
 /*-----------------------------------------------
 |   Letter Spacing
 -----------------------------------------------*/
-.ls { letter-spacing: 0.04em; }
-.ls-2{ letter-spacing: 0.25em; }
+.ls{ letter-spacing: 2px; }
 
 
 
@@ -67,4 +66,26 @@
     font-weight: $font-weight-normal;
     display: inline-block;
   }
+}
+
+hr {
+  background-color: $primary;
+  border-radius: 1.5px;
+  margin-left: auto;
+  margin-right: auto;
+
+  &.short {
+    width: 4.20873rem;
+  }
+
+  &.muted{
+    height: 1px;
+    border-radius: 0.5px;
+    opacity: .15;
+  }
+}
+
+.dropcap:first-letter {
+  color: $primary; 
+  font-weight: $font-weight-semi-bold;
 }

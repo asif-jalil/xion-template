@@ -1,0 +1,19 @@
+mixin ContactForm 
+  .card 
+    .card-body.h-100.p-5 
+      h5.mb-3 Write to us
+      form
+        .row
+          .col-12
+            input(type="text" placeholder="Your Name" required).form-control.bg-white
+          .col-12.mt-4
+            input(type="email" placeholder="Email" required).form-control.bg-white
+          .col-12.mt-4
+            textarea(rows="11" placeholder="Enter your descriptions here..." required).form-control.bg-white
+          .col-12.mt-4
+            .row
+              .col-auto
+                button.btn.btn-md-lg.btn-primary(type="Submit") 
+                  span.color-white.fw-600 Send Now
+              .col
+                .zform-feedback

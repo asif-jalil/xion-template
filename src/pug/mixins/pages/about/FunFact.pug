@@ -1,0 +1,35 @@
+mixin FunFact
+  - 
+    var facts = [
+      {
+        title: "Cases Solved",
+        value: "52k"
+      },
+      {
+        title: "Trained Experts",
+        value: "164"
+      },
+      {
+        title: "Branches",
+        value: "38"
+      },
+      {
+        title: "Satisfied Clients",
+        value: "100%"
+      }
+    ]
+  +Section({image: `${CWD}assets/img/background-15.jpg`, className: "overlay overlay-elixir"})
+    .d-flex
+      //- span.ion-android-checkmark-circle.fs-5.text-warning.me-3(style="transform: translateY(-1rem)")
+      span.me-3 
+        img(src=`${CWD}assets/img/checkmark.png`, alt="checkmark" style="width: 55px")
+      .flex-1
+        h2.text-warning.fs-3.fs-lg-4 Take the right step,
+          br
+          span.text-white do the big things.
+        .row.mt-4.pe-lg-10
+          each fact in facts 
+            .col-md-3.overflow-hidden(data-zanim-timeline!={} data-zanim-trigger="scroll")
+              .fs-3.fs-lg-4.mb-0.fw-bold.text-white.mt-lg-5.mt-3(data-zanim!={delay: 0.1}) #{fact.value}
+              h6.fs-0.text-white(data-zanim!={delay: 0.2}) #{fact.title}
+

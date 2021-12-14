@@ -177,7 +177,7 @@ $font-sizes: map-merge(
 );
 
 $font-size-sm: $font-size-base * 0.875 !default;
-$font-size-lg: $font-size-base * 1.2 !default;
+$font-size-lg: $font-size-base * 1.333 !default;
 $font-weight-thin: 100 !default;
 $font-weight-lighter: 200 !default;
 $font-weight-light: 300 !default;
@@ -226,9 +226,12 @@ $text-muted: $gray-500 !default;
 
 $blockquote-font-size: $font-size-lg !default;
 
-$line-height-base:            1.5;
+$line-height-base:            1.45;
 $line-height-sm:              1.25;
 $line-height-lg:              1.75;
+
+$hr-height: 3px;
+$hr-opacity: 0.8;
 
 //*-----------------------------------------------
 //|   Accordion
@@ -285,6 +288,12 @@ $input-btn-padding-y-lg: $spacer * 1.2 !default;
 $input-btn-padding-x-lg: $spacer * 5 !default;
 $input-btn-font-size-lg: $font-size-base;
 
+$input-padding-y: $spacer * 0.375;
+$input-padding-x: $spacer * 0.75;
+
+$input-padding-y-lg: $spacer * 0.5;
+$input-padding-x-lg: $spacer * 0.5;
+
 // $btn-reveal-hover-shadow: 0 0 0 1px rgba(43, 45, 80, 0.1),
 //   0 2px 5px 0 rgba(43, 45, 80, 0.08), 0 1px 1.5px 0 rgba($black, 0.07),
 //   0 1px 2px 0 rgba($black, 0.08) !default;
@@ -295,21 +304,27 @@ $btn-font-weight: $font-weight-bold !default;
 //*-----------------------------------------------
 //|   Forms
 //-----------------------------------------------*/
-$input-disabled-bg: var(--#{$variable-prefix}200) !default;
-$input-group-addon-bg: var(--#{$variable-prefix}200) !default;
+$input-padding-y: $spacer * 0.8;
+$input-padding-x: $spacer * 0.8;
+$input-bg: var(--#{$variable-prefix}100);
+$input-focus-bg: var(--#{$variable-prefix}white);
+$form-check-input-checked-bg-image:       url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
+// $input-disabled-bg: var(--#{$variable-prefix}200) !default;
+// $input-group-addon-bg: var(--#{$variable-prefix}200) !default;
 $input-border-color: var(--#{$variable-prefix}input-border-color) !default;
-$input-placeholder-color: var(--#{$variable-prefix}input-placeholder-color) !default;
-$input-color: var(--#{$variable-prefix}input-color) !default;
-$form-check-margin-bottom: 0.34375rem !default;
-$form-label-font-size: $font-size-sm !default;
-$form-check-input-bg: transparent !default;
-$form-check-input-border: 1px solid var(--#{$variable-prefix}form-check-input-border-color) !default;
-$form-switch-color: $gray-500 !default;
-$form-select-disabled-bg: var(--#{$variable-prefix}200) !default;
-$input-bg: var(--#{$variable-prefix}input-bg) !default;
-$input-focus-border-color: var(--#{$variable-prefix}input-focus-border-color) !default;
-$form-file-button-bg: $gray-900 !default;
-$form-file-button-color: $gray-300 !default;
+// $input-placeholder-color: var(--#{$variable-prefix}input-placeholder-color) !default;
+// $input-color: var(--#{$variable-prefix}input-color) !default;
+$input-box-shadow: none;
+// $form-check-margin-bottom: 0.34375rem !default;
+// $form-label-font-size: $font-size-sm !default;
+// $form-check-input-bg: transparent !default;
+// $form-check-input-border: 1px solid var(--#{$variable-prefix}form-check-input-border-color) !default;
+// $form-switch-color: $gray-500 !default;
+// $form-select-disabled-bg: var(--#{$variable-prefix}200) !default;
+// $input-bg: var(--#{$variable-prefix}input-bg) !default;
+// $input-focus-border-color: var(--#{$variable-prefix}input-focus-border-color) !default;
+// $form-file-button-bg: $gray-900 !default;
+// $form-file-button-color: $gray-300 !default;
 
 //*-----------------------------------------------
 //|   Z-index
@@ -405,13 +420,14 @@ $pagination-active-border-color: var(--#{$variable-prefix}pagination-active-bord
 $pagination-disabled-color: var(--#{$variable-prefix}pagination-disabled-color) !default;
 $pagination-disabled-bg: var(--#{$variable-prefix}pagination-disabled-bg) !default;
 $pagination-disabled-border-color: var(--#{$variable-prefix}pagination-disabled-border-color) !default;
+$pagination-border-radius: 0.25rem;
 
 //*-----------------------------------------------
 //|   Cards
 //-----------------------------------------------*/
 // $card-spacer-y: map_get($spacers, 3) !default;
-$card-spacer-y: 1.25rem !default;
-$card-spacer-x: 1.25rem !default;
+$card-spacer-y: map_get($spacers, 4) !default;
+$card-spacer-x: map_get($spacers, 4) !default;
 $card-border-width: 0px !default;
 $card-border-radius: $border-radius-lg !default;
 $card-border-color: var(--#{$variable-prefix}card-border-color) !default;

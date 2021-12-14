@@ -218,7 +218,7 @@
   /* ------------------------------- Pagination ------------------------------- */
   --#{$variable-prefix}pagination-color: #{$black};
   --#{$variable-prefix}pagination-bg: #{$white};
-  --#{$variable-prefix}pagination-border-color: #{map-get($grays, '200')};
+  --#{$variable-prefix}pagination-border-color: #{map-get($grays, '300')};
   --#{$variable-prefix}pagination-hover-color: #{$white};
   --#{$variable-prefix}pagination-hover-bg: #{$primary};
   --#{$variable-prefix}pagination-hover-border-color: #{$primary};

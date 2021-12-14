@@ -18,7 +18,6 @@
   width: 2.5rem;
   border: 0;
   font-size: $font-size-sm;
-  box-shadow: $box-shadow-sm;
   @include hover-focus {
     background-color: var(--#{$variable-prefix}200);
   }
@@ -29,8 +28,8 @@
   }
   
   &.icon-item-lg {
-    height: 2.75rem;
-    width: 2.75rem;
+    height: 3.125rem;
+    width: 3.125rem;
   }
 }
 

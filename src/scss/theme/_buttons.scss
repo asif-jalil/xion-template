@@ -149,3 +149,30 @@ $theme-btn-colors: (
 }
 
 
+// Elixir Special Play Button
+.btn-elixir-play{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 80px;
+  width: 80px;
+  text-align: center;
+  background-color: var(--#{$variable-prefix}white);
+  border-radius: 50%;
+  border: none;
+  position: relative;
+  font-size: 0.675rem;
+  color: var(--#{$variable-prefix}primary);
+  margin-bottom: 40px;
+  &:before{
+      content: '';
+      height: 100px;
+      width: 100px;
+      position: absolute;
+      left: -10px;
+      top: -10px;
+      border: 10px solid rgba(var(--#{$variable-prefix}white-rgb), 0.5);
+      border-radius: 100%;
+  }
+}

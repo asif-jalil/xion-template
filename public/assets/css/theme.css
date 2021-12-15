@@ -18230,6 +18230,39 @@ ol {
   display: none;
 }
 
+.btn-elixir-play {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
+  height: 80px;
+  width: 80px;
+  text-align: center;
+  background-color: var(--elixir-white);
+  border-radius: 50%;
+  border: none;
+  position: relative;
+  font-size: 0.675rem;
+  color: var(--elixir-primary);
+  margin-bottom: 40px;
+}
+.btn-elixir-play:before {
+  content: "";
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  left: -10px;
+  top: -10px;
+  border: 10px solid rgba(var(--elixir-white-rgb), 0.5);
+  border-radius: 100%;
+}
+
 /*-----------------------------------------------
 |   Documentation link
 -----------------------------------------------*/
@@ -19846,9 +19879,9 @@ a[href].bg-200:hover, a[href].bg-200:focus {
 
 .icon-item {
   border-radius: 50%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
@@ -19862,6 +19895,7 @@ a[href].bg-200:hover, a[href].bg-200:focus {
   height: 2.5rem;
   width: 2.5rem;
   border: 0;
+  position: relative;
   font-size: 0.875rem;
 }
 .icon-item:hover, .icon-item:focus {

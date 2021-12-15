@@ -1,4 +1,6 @@
-mixin NewsRoom 
+include NewsCard
+
+append variables 
   -
     var news = [
       {
@@ -45,10 +47,8 @@ mixin NewsRoom
       }
     ]
 
-  .row.g-4 
-    each item in news 
-      .col-md-6.col-lg-4
-        +NewsCard(item)
+mixin NewsRoom 
+  +NewsWrapper
 
   .row 
     .col-auto.mx-auto.mt-4
@@ -72,3 +72,12 @@ mixin NewsRoom
               span.sr-only Next
 
 
+mixin NewsWrapper(length) 
+  if !length
+    - length = news.length
+
+  - var newsItems = news.slice(0, length)
+  .row.g-4 
+    each item in newsItems 
+      .col-md-6.col-lg-4
+        +NewsCard(item)

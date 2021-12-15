@@ -21,14 +21,13 @@ mixin ServiceIntro
       }
     ]
 
-  +Section 
-    .row
-      .col-lg-6.pe-0.pe-lg-3
-        img(src=`${CWD}assets/img/why-choose-us.jpg` alt="about").rounded.img-fluid
-      .col-lg-6.px-lg-5.mt-6.mt-lg-0(data-zanim-timeline!={}  data-zanim-trigger="scroll")
-        each item, index in introItems 
-          - var isFirst = index === 0 
-          +IntroItem(item, isFirst)
+  .row
+    .col-lg-6.pe-0.pe-lg-3
+      img(src=`${CWD}assets/img/why-choose-us.jpg` alt="about").rounded.img-fluid
+    .col-lg-6.px-lg-5.mt-6.mt-lg-0(data-zanim-timeline!={}  data-zanim-trigger="scroll")
+      each item, index in introItems 
+        - var isFirst = index === 0 
+        +IntroItem(item, isFirst)
 
 
 mixin IntroItem(config, isFirst)

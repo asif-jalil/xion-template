@@ -17716,19 +17716,11 @@ ol {
   height: 0;
   width: 30px;
 }
-.hamburger .hamburger-box .hamburger-inner {
-  position: relative;
-}
 .hamburger .hamburger-box .hamburger-inner, .hamburger .hamburger-box .hamburger-inner::after, .hamburger .hamburger-box .hamburger-inner::before {
   width: 100%;
   height: 1px;
   border-radius: 0.188rem;
   background-color: currentColor;
-}
-.hamburger .hamburger-box .hamburger-inner::after, .hamburger .hamburger-box .hamburger-inner::before {
-  content: "";
-  position: absolute;
-  right: 0;
 }
 .hamburger.is-active .hamburger-inner {
   background-color: transparent;
@@ -17740,6 +17732,11 @@ ol {
 
 .hamburger--emphatic .hamburger-inner::after {
   top: 7px;
+}
+
+.navbar-toggler:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -19244,16 +19241,26 @@ hr.muted {
 .dropdown-menu {
   font-size: 0.7501875469rem;
   display: block;
-  opacity: 0;
-  visibility: hidden;
+  display: none;
   -webkit-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
+@media (min-width: 992px) {
+  .dropdown-menu {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
 
 .dropdown-menu.show {
-  opacity: 1;
-  visibility: visible;
+  display: block;
+}
+@media (min-width: 992px) {
+  .dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
 .dropdown-indicator {

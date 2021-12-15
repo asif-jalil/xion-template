@@ -4,12 +4,12 @@ mixin Navbar
       nav.navbar.navbar-expand-lg 
         a.navbar-brand(href='/index.html')
           img(src=`${CWD}assets/img/logo-dark.png` alt="")
-        button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarNavDropdown' aria-controls='navbarNavDropdown' aria-expanded='false' aria-label='Toggle navigation')
+        button.navbar-toggler.p-1(type='button' data-bs-toggle='collapse' data-bs-target='#navbarNavDropdown' aria-controls='navbarNavDropdown' aria-expanded='false' aria-label='Toggle navigation')
           .hamburger.hamburger--emphatic
             .hamburger-box
               .hamburger-inner
         #navbarNavDropdown.collapse.navbar-collapse
-          ul.navbar-nav.fs-0.fw-bold
+          ul.navbar-nav.fs-0.fw-bold.py-3.py-lg-0.mt-1.mb-2.my-lg-0
             li.nav-item.dropdown
               a.nav-link.dropdown-toggle.dropdown-indicator(href='JavaScript:void(0)' role="button" data-bs-toggle="dropdown" aria-expanded="false") Home
               ul.dropdown-menu.mt-n1(aria-labelledby='navbarDropdown')
@@ -80,6 +80,6 @@ mixin Navbar
 
             li.nav-item
               a.nav-link(href='contact.html').d-block.mr-md-9 Contact
-          ul.navbar-nav.ms-lg-auto 
+          ul.navbar-nav.ms-lg-auto.py-3.py-lg-0.my-1.my-lg-0 
             li.nav-item
-              a(href='https://themewagon.com/themes/elixir/' target="_blank").btn.btn-outline-primary.rounded-pill.btn-sm.border-2.fw-bold Purchase
+              a(href='https://themewagon.com/themes/elixir/' target="_blank").btn.btn-outline-primary.rounded-pill.btn-sm.border-2.fw-bold.w-100.w-lg-auto Purchase

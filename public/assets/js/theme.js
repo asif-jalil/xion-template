@@ -1882,6 +1882,25 @@ function initMap() {
     });
   }
 }
+/*-----------------------------------------------
+|   Hamburger
+-----------------------------------------------*/
+
+
+var hamburgerInit = function hamburgerInit() {
+  var Selector = {
+    HAMBURGER: '.table-responsive'
+  };
+  var hamburgers = Array.form(document.querySelectorAll(Selector.HAMBURGER));
+
+  if (hamburgers.length) {
+    hamburgers.forEach(function (burger) {
+      burger.addEventListener('click', function () {
+        burger.classList.toggle('is-active');
+      });
+    });
+  }
+};
 /* -------------------------------------------------------------------------- */
 
 /*                                 bigPicture                                 */
@@ -2260,4 +2279,5 @@ docReady(scrollbarInit);
 docReady(dropdownMenuInit);
 docReady(lightboxInit);
 docReady(bgPlayerInit);
+docReady(hamburgerInit);
 //# sourceMappingURL=theme.js.map

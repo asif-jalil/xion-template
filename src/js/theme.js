@@ -19,6 +19,7 @@ import scrollbarInit from './scrollbar';
 import dropdownMenuInit from './dropdown-menu';
 import lightboxInit from './lightbox';
 import bgPlayerInit from './bg-player';
+import hamburgerInit from './hamburger';
 
 /* -------------------------------------------------------------------------- */
 /*                            Theme Initialization                            */
@@ -49,3 +50,4 @@ docReady(scrollbarInit);
 docReady(dropdownMenuInit);
 docReady(lightboxInit);
 docReady(bgPlayerInit);
+docReady(hamburgerInit);

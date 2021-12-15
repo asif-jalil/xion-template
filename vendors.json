@@ -50,5 +50,9 @@
 	"bigpicture": {
 		"src": "dist/BigPicture.js",
 		"dest": "bigpicture"
+	},
+	"hamburgers": {
+		"src": "dist/hamburgers.min.css",
+		"dest": "hamburgers"
 	}
 }

@@ -20828,4 +20828,22 @@ input[type=file].form-control-lg {
 .googlemap > .marker-content {
   opacity: 0;
 }
+
+.yt-video {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  -webkit-transform: translate(50%, -50%);
+  -ms-transform: translate(50%, -50%);
+  transform: translate(50%, -50%);
+  z-index: -100000;
+  pointer-events: none;
+}
+
+iframe.yt-video {
+  opacity: 0;
+}
+iframe.yt-video.loaded {
+  opacity: 1;
+}
 /*# sourceMappingURL=theme-rtl.css.map */

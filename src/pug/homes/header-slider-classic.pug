@@ -1,5 +1,5 @@
-extends layouts/LayoutHomes
-include mixins/homes/SliderHeader
+extends ../layouts/LayoutHomes
+include ../mixins/homes/SliderClassic
 
 
 
@@ -10,4 +10,4 @@ prepend scripts
   script(src=`${CWD}vendors/swiper/swiper-bundle.min.js`)
 
 append homeBanner
-  +SliderHeader
+  +SliderClassic

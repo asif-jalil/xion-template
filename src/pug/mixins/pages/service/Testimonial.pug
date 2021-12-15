@@ -30,7 +30,7 @@ mixin Testimonial
     })
       .swiper-wrapper 
         each item in testimonialItems
-          +Slider(item)
+          +TestimonialSlider(item)
 
       .swiper-nav
         .swiper-button-prev.icon-item.icon-item-lg
@@ -39,7 +39,7 @@ mixin Testimonial
           span.fas.fa-chevron-right.fs--2
 
 
-mixin Slider(config) 
+mixin TestimonialSlider(config) 
   .swiper-slide
     .row.px-lg-8
       .col-4.col-md-3.mx-auto

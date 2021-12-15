@@ -18,6 +18,7 @@ import dropdownOnHover from './dropdown-on-hover';
 import scrollbarInit from './scrollbar';
 import dropdownMenuInit from './dropdown-menu';
 import lightboxInit from './lightbox';
+import bgPlayerInit from './bg-player';
 
 /* -------------------------------------------------------------------------- */
 /*                            Theme Initialization                            */
@@ -47,3 +48,4 @@ docReady(scrollbarInit);
 
 docReady(dropdownMenuInit);
 docReady(lightboxInit);
+docReady(bgPlayerInit);

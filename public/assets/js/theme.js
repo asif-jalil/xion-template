@@ -428,11 +428,132 @@ anchors.options = {
   icon: '#'
 };
 anchors.add('[data-anchor]');
+/* --------------------------------------------------------------------------
+|                                 bg player
+--------------------------------------------------------------------------- */
+
+var bgPlayerInit = function bgPlayerInit() {
+  var Selector = {
+    DATA_YOUTUBE_EMBED: '[data-youtube-embed]',
+    YT_VIDEO: '.yt-video'
+  };
+  var DATA_KEY = {
+    YOUTUBE_EMBED: 'youtube-embed'
+  };
+  var ClassName = {
+    LOADED: 'loaded'
+  };
+  var Events = {
+    SCROLL: 'scroll',
+    LOADING: 'loading',
+    DOM_CONTENT_LOADED: 'DOMContentLoaded'
+  };
+  var youtubeEmbedElements = document.querySelectorAll(Selector.DATA_YOUTUBE_EMBED);
+
+  var loadVideo = function loadVideo() {
+    function setupPlayer() {
+      window.YT.ready(function () {
+        youtubeEmbedElements.forEach(function (youtubeEmbedElement) {
+          var userOptions = utils.getData(youtubeEmbedElement, DATA_KEY.YOUTUBE_EMBED);
+          var defaultOptions = {
+            videoId: 'hLpy-DRuiz0',
+            startSeconds: 1,
+            endSeconds: 50
+          };
+
+          var options = window._.merge(defaultOptions, userOptions);
+
+          var youTubePlayer = function youTubePlayer() {
+            // eslint-disable-next-line
+            new YT.Player(youtubeEmbedElement, {
+              videoId: options.videoId,
+              playerVars: {
+                autoplay: 1,
+                disablekb: 1,
+                controls: 0,
+                modestbranding: 1,
+                // Hide the Youtube Logo
+                loop: 1,
+                fs: 0,
+                enablejsapi: 0,
+                start: options === null || options === void 0 ? void 0 : options.startSeconds,
+                end: options === null || options === void 0 ? void 0 : options.endSeconds
+              },
+              events: {
+                onReady: function onReady(e) {
+                  e.target.mute();
+                  e.target.playVideo();
+                },
+                onStateChange: function onStateChange(e) {
+                  if (e.data === window.YT.PlayerState.PLAYING) {
+                    document.querySelectorAll(Selector.DATA_YOUTUBE_EMBED).forEach(function (embedElement) {
+                      embedElement.classList.add(ClassName.LOADED);
+                    });
+                  }
+
+                  if (e.data === window.YT.PlayerState.PAUSED) {
+                    e.target.playVideo();
+                  }
+
+                  if (e.data === window.YT.PlayerState.ENDED) {
+                    // Loop from starting point
+                    e.target.seekTo(options.startSeconds);
+                  }
+                }
+              }
+            });
+          };
+
+          youTubePlayer();
+        });
+      });
+    }
+
+    var tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    tag.onload = setupPlayer;
+  };
+
+  if (document.readyState !== Events.LOADING) {
+    loadVideo();
+  } else {
+    document.addEventListener(Events.DOM_CONTENT_LOADED, function () {
+      return loadVideo();
+    });
+  }
+  /* --------------------------------------------------------------------------
+   |                                 Adjust BG Ratio
+   --------------------------------------------------------------------------- */
+
+
+  var adjustBackgroundRatio = function adjustBackgroundRatio() {
+    var ytElements = document.querySelectorAll(Selector.YT_VIDEO);
+    ytElements.forEach(function (ytEl) {
+      var ytElement = ytEl;
+      var width = ytElement.parentElement.offsetWidth + 200;
+      var height = width * 9 / 16;
+      var minHeight = ytElement.parentElement.offsetHeight + 112;
+      var minWidth = minHeight * 16 / 9;
+      ytElement.style.width = "".concat(width, "px");
+      ytElement.style.height = "".concat(height, "px");
+      ytElement.style.minHeight = "".concat(minHeight, "px");
+      ytElement.style.minWidth = "".concat(minWidth, "px");
+    });
+  };
+
+  adjustBackgroundRatio();
+  document.addEventListener(Events.SCROLL, function () {
+    return adjustBackgroundRatio();
+  });
+};
 /* -------------------------------------------------------------------------- */
 
 /*                              Config                                        */
 
 /* -------------------------------------------------------------------------- */
+
 
 var CONFIG = {
   isNavbarVerticalCollapsed: false,
@@ -2138,4 +2259,5 @@ docReady(dropdownOnHover);
 docReady(scrollbarInit);
 docReady(dropdownMenuInit);
 docReady(lightboxInit);
+docReady(bgPlayerInit);
 //# sourceMappingURL=theme.js.map

@@ -32,7 +32,7 @@ mixin ServiceIntro
 
 mixin IntroItem(config, isFirst)
   .overflow-hidden
-    .px-4.px-sm-0(data-zanim!={delay: 0.0} class=`${!isFirst ? 'mt-5' : ''}`)
+    .px-4.px-sm-0(data-zanim-xs!={delay: 0.0} class=`${!isFirst ? 'mt-5' : ''}`)
       h5.fs-0.fs-lg-1
         span(class=`fas fa-${config.icon}` data-fa-transform=`${config.iconTransform}`).fs-1.me-2
         | #{config.title}

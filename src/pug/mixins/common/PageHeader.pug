@@ -8,8 +8,8 @@ mixin PageHeader(config)
         //- Remove px-md-0 form col
         .col-md-8.text-white(data-zanim-timeline!={} data-zanim-trigger="scroll")
           .overflow-hidden
-            h1.text-white.fs-4.fs-md-5.mb-0.lh-1(data-zanim!={delay:0.0})= config.title
-            .nav(aria-label="breadcrumb" role="navigation" data-zanim!={delay:0.1})
+            h1.text-white.fs-4.fs-md-5.mb-0.lh-1(data-zanim-md!={delay:0.0, animation: "slide-down" })= config.title
+            .nav(aria-label="breadcrumb" role="navigation" data-zanim-lg!={delay:0.1})
               //- Add ps-1 instead of ps-0
               ol.breadcrumb.fs-1.ps-1.fw-bold
                 li.breadcrumb-item

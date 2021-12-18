@@ -229,6 +229,7 @@ $blockquote-font-size: $font-size-lg !default;
 $line-height-base:            1.45;
 $line-height-sm:              1.25;
 $line-height-lg:              1.75;
+$line-height-xs:              1.15;
 
 $hr-height: 3px;
 $hr-opacity: 0.8;
@@ -279,6 +280,7 @@ $btn-border-radius-lg:        $border-radius;
 $input-btn-padding-y: $spacer * 0.8 !default;
 $input-btn-padding-x: $spacer * 2.5 !default;
 $input-btn-font-size: map-get($font-sizes,  '-1');
+$input-btn-line-height: 1.5;
 
 $input-btn-padding-y-sm: $spacer * 0.4 !default;
 $input-btn-padding-x-sm: $spacer * 1.2 !default;

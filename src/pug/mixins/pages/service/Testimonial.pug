@@ -43,7 +43,7 @@ mixin TestimonialSlider(config)
   .swiper-slide
     .row.px-lg-8
       .col-4.col-md-3.mx-auto
-        img(src=`${CWD}assets/img/${config.img}` alt="Member" style="width: auto").rounded-3.mx-auto
+        img(src=`${CWD}assets/img/${config.img}` alt="Member" style="width: auto").rounded-3.mx-auto.img-fluid
       .col-md-9.ml-auto.mt-4.mt-md-0.px-4.px-sm-3
         p.lead.fw-normal= config.text 
         h6.fs-0.mb-1.mt-4 #{config.author}

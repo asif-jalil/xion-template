@@ -4,14 +4,14 @@
 
 const hamburgerInit = () => {
 	const Selector = {
-		HAMBURGER: '.table-responsive'
+		HAMBURGER: '.hamburger'
 	};
 
-	const hamburgers = Array.form(document.querySelectorAll(Selector.HAMBURGER));
+	const hamburgers = Array.from(document.querySelectorAll(Selector.HAMBURGER));
 
 	if (hamburgers.length) {
 		hamburgers.forEach(burger => {
-			burger.addEventListener('click', () => {
+			document.addEventListener('click', () => {
 				burger.classList.toggle('is-active');
 			});
 		});

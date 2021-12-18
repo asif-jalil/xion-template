@@ -1,10 +1,10 @@
 mixin SingleNews 
   .overflow-hidden.mb-4(data-zanim-timeline!={} data-zanim-trigger="scroll")
-    div(data-zanim!={delay: 0.0})
+    div(data-zanim-xs!={delay: 0.0})
       a(href="#!").d-inline-block.text-500 Thomas Been
       | , &nbsp;
       a(href="#!").d-inline-block.text-500 May 15, 2017
-    h4(data-zanim!={delay: 0.1}) Tax impacts of lease accounting change
+    h4(data-zanim-xs!={delay: 0.1}) Tax impacts of lease accounting change
 
   .row 
     .col-lg-8
@@ -97,10 +97,10 @@ mixin Author
   .card.mb-5 
     .card-body.p-5 
       .overflow-hidden(data-zanim-timeline!={} data-zanim-trigger="scroll")
-        img(data-zanim!={delay: 0.0} src=`${CWD}assets/img/portrait-8.jpg` alt="Author").rounded-circle
-        h5.text-capitalize.mt-3.mb-0(data-zanim!={delay: 0.1}) thomas been
-        p.mb-0.mt-3(data-zanim!={delay: 0.2}) Flattering high rise easy care flared fit - cut straight leg that flares at the ankle comfy tight. Regular fit viscose elastane leather black wool.
-        .pt-4(data-zanim!={delay: 0.3})
+        img(data-zanim-xs!={delay: 0.0} src=`${CWD}assets/img/portrait-8.jpg` alt="Author").rounded-circle
+        h5.text-capitalize.mt-3.mb-0(data-zanim-xs!={delay: 0.1}) thomas been
+        p.mb-0.mt-3(data-zanim-xs!={delay: 0.2}) Flattering high rise easy care flared fit - cut straight leg that flares at the ankle comfy tight. Regular fit viscose elastane leather black wool.
+        .pt-4(data-zanim-xs!={delay: 0.3})
           a(href="#!").d-inline-block
             span.fab.fa-linkedin.fs-2.mx-2.text-400
           a(href="#!").d-inline-block

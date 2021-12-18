@@ -54,5 +54,9 @@
 	"hamburgers": {
 		"src": "dist/hamburgers.min.css",
 		"dest": "hamburgers"
+	},
+	"imagesloaded": {
+		"src": "imagesloaded.pkgd.min.js",
+		"dest": "imagesloaded"
 	}
 }

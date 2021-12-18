@@ -2,11 +2,11 @@ mixin Login
   +Section({image: `${CWD}assets/img/header-5.jpg`, className: "overlay overlay-2"}).text-center.py-0
     .row.min-vh-100.align-items-center
       .col-md-8.col-lg-5.mx-auto(data-zanim-timeline!={} data-zanim-trigger="scroll")
-        div(data-zanim!={delay: 0.0}).mb-5
+        div(data-zanim-xs!={delay: 0.0}).mb-5
           a(href="/index.html")
             img(src=`${CWD}assets/img/logo-light.png` alt="logo")
         .card
-          .card-body.p-md-5(data-zanim!={delay: 0.1})
+          .card-body.p-md-5(data-zanim-xs!={delay: 0.1})
             h4.text-uppercase.fs-0.fs-md-1 login with elixir
             form.text-start.mt-4(method="post")
               .row.align-items-center

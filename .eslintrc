@@ -6,6 +6,7 @@
 		"jquery": true
 	},
 	"rules": {
+		"max-len": "off",
 		"import/extensions": "off",
 		"no-tabs": "off",
 		"indent": "off",
@@ -19,7 +20,8 @@
 		"import/named": "off",
 		"import/no-extraneous-dependencies": "off",
 		"arrow-parens": "off",
-		"linebreak-style": "off"
+		"linebreak-style": "off",
+		"consistent-return": "off"
 	},
 	"parserOptions": {
 		"ecmaVersion": 2020

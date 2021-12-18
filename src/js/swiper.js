@@ -4,14 +4,29 @@ import utils from './utils';
 |  Swiper
 -----------------------------------------------*/
 const swiperInit = () => {
-	const swipers = document.querySelectorAll('[data-swiper]');
+	const Selector = {
+		DATA_SWIPER: '[data-swiper]',
+		DATA_ZANIM_TIMELINE: '[data-zanim-timeline]',
+		IMG: 'img',
+		SWIPER_NAV: '.swiper-nav',
+		SWIPER_BUTTON_NEXT: '.swiper-button-next',
+		SWIPER_BUTTON_PREV: '.swiper-button-prev'
+	};
+	const DATA_KEY = {
+		SWIPER: 'swiper'
+	};
+	const Events = {
+		SLIDE_CHANGE: 'slideChange'
+	};
+
+	const swipers = document.querySelectorAll(Selector.DATA_SWIPER);
 	const navbarVerticalToggle = document.querySelector('.navbar-vertical-toggle');
 	swipers.forEach(swiper => {
-		const options = utils.getData(swiper, 'swiper');
+		const options = utils.getData(swiper, DATA_KEY.SWIPER);
 		const thumbsOptions = options.thumb;
 		let thumbsInit;
 		if (thumbsOptions) {
-			const thumbImages = swiper.querySelectorAll('img');
+			const thumbImages = swiper.querySelectorAll(Selector.IMG);
 			let slides = '';
 			thumbImages.forEach(img => {
 				slides += `
@@ -35,7 +50,7 @@ const swiperInit = () => {
 			thumbsInit = new window.Swiper(thumbs, thumbsOptions);
 		}
 
-		const swiperNav = swiper.querySelector('.swiper-nav');
+		const swiperNav = swiper.querySelector(Selector.SWIPER_NAV);
 		const newSwiper = new window.Swiper(swiper, {
 			...options,
 			navigation: {
@@ -51,6 +66,21 @@ const swiperInit = () => {
 				newSwiper.update();
 			});
 		}
+
+		//- zanimation effect start
+		if (swiper) {
+			newSwiper.on(Events.SLIDE_CHANGE, () => {
+				const timelineElements = swiper.querySelectorAll(Selector.DATA_ZANIM_TIMELINE);
+				timelineElements.forEach(el => {
+					window.zanimation(el, animation => {
+						setTimeout(() => {
+							animation.play();
+						}, 800);
+					});
+				});
+			});
+		}
+		//- zanimation effect end
 	});
 };
 

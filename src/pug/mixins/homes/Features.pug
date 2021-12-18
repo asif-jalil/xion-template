@@ -44,9 +44,9 @@ mixin FeatureItem(config)
   .col-md-6.col-lg-4.mt-4(data-zanim-timeline!={}  data-zanim-trigger="scroll")
     .px-3.py-4.px-lg-4
       .overflow-hidden
-        //- span.fs-3.text-primary(data-zanim!={delay: 0.0} class=`${config.icon}`)
-        img(src=`${CWD}assets/img/icons/${config.icon}`, alt="icon" style="height: 37px;" data-zanim!={delay: 0.0})
+        //- span.fs-3.text-primary(data-zanim-xs!={delay: 0.0} class=`${config.icon}`)
+        img(src=`${CWD}assets/img/icons/${config.icon}`, alt="icon" style="height: 37px;" data-zanim-xs!={delay: 0.0})
       .overflow-hidden
-        h5.mt-3(data-zanim!={delay: 0.1})=config.title
+        h5.mt-3(data-zanim-xs!={delay: 0.1})=config.title
       .overflow-hidden
-        p.mb-0(data-zanim!={delay: 0.2})!=config.desc
+        p.mb-0(data-zanim-xs!={delay: 0.2})!=config.desc

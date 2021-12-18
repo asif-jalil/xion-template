@@ -20,6 +20,7 @@ import dropdownMenuInit from './dropdown-menu';
 import lightboxInit from './lightbox';
 import bgPlayerInit from './bg-player';
 import hamburgerInit from './hamburger';
+import zanimationInit from './zanimation';
 
 /* -------------------------------------------------------------------------- */
 /*                            Theme Initialization                            */
@@ -51,3 +52,4 @@ docReady(dropdownMenuInit);
 docReady(lightboxInit);
 docReady(bgPlayerInit);
 docReady(hamburgerInit);
+docReady(zanimationInit);

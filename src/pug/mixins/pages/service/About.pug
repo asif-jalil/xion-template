@@ -47,7 +47,7 @@ mixin About
 
     +AboutItem(item, isFirst, isLast, isEven)
 
-  .row.mt-7 
+  .row.g-4.mt-7 
     each item in aboutFeatures
       +AboutFeatureItem(item)
 
@@ -61,19 +61,19 @@ mixin AboutItem(config, isFirst, isLast, isEven)
       .d-flex.align-items-center.h-100
         div(data-zanim-timeline!={} data-zanim-trigger="scroll")
           .overflow-hidden
-            h5(data-zanim!={delay: 0.0}) #{config.title}
+            h5(data-zanim-xs!={delay: 0.0}) #{config.title}
           .overflow-hidden
-            p.mt-3(data-zanim!={delay: 0.1}) #{config.desc}
+            p.mt-3(data-zanim-xs!={delay: 0.1}) #{config.desc}
           .overflow-hidden
-            div(data-zanim!={delay: 0.2})
+            div(data-zanim-xs!={delay: 0.2})
               a(href=`${config.link}`).d-flex.align-items-center Learn More
-                .overflow-hidden.ml-2
-                  span.d-inline-block(data-zanim!={from:{opacity: 0, x: -30}, to:{opacity: 1, x: 0}, delay: 0.8}) &xrarr;
+                .overflow-hidden.ms-2
+                  span.d-inline-block(data-zanim-xs!={from:{opacity: 0, x: -30}, to:{opacity: 1, x: 0}, delay: 0.8}) &xrarr;
 
 
 mixin AboutFeatureItem(config) 
   .col-sm-6.col-lg-4.px-4.px-sm-3(data-zanim-timeline!={}  data-zanim-trigger="scroll")
-    h5(data-zanim!={delay: 0.0})
+    h5(data-zanim-xs!={delay: 0.0})
       span.text-primary.fs-0.me-3(class=`${config.icon}`)
       | #{config.title}
-    p.mt-3.pe-3.pe-lg-5.mb-0(data-zanim!={delay: 0.1})!= config.desc
+    p.mt-3.pe-3.pe-lg-5.mb-0(data-zanim-xs!={delay: 0.1})!= config.desc

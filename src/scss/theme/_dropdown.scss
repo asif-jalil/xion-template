@@ -34,13 +34,14 @@
     content: "";
     display: block;
     position: absolute;
-    right: 7px;
-    top: 47%;
-    height: 0.45rem;
-    width: 0.45rem;
+    right: 9px;
+    top: 46%;
+    height: 0.438rem;
+    width: 0.438rem;
     border: none;
     border-right: 2px solid $primary;
     border-bottom: 2px solid $primary;
+    border-radius: 1px;
     transform: translateY(-50%) rotate(45deg);
     transition: $transition-base;
     transform-origin: center;

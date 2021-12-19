@@ -4,11 +4,11 @@ mixin Navbar
       nav.navbar.navbar-expand-lg 
         a.navbar-brand(href='/index.html')
           img(src=`${CWD}assets/img/logo-dark.png` alt="")
-        button.navbar-toggler.p-0(type='button' data-bs-toggle='collapse' data-bs-target='#navbarNavDropdown' aria-controls='navbarNavDropdown' aria-expanded='false' aria-label='Toggle navigation')
+        button.navbar-toggler.p-0(type='button' data-bs-toggle='collapse' data-bs-target='#primaryNavbarCollapse' aria-controls='navbarNavDropdown' aria-expanded='false' aria-label='Toggle navigation')
           .hamburger.hamburger--emphatic
             .hamburger-box
               .hamburger-inner
-        #navbarNavDropdown.collapse.navbar-collapse
+        #primaryNavbarCollapse.collapse.navbar-collapse
           ul.navbar-nav.fs-0.fw-bold.py-3.py-lg-0.mt-1.mb-2.my-lg-0.ms-lg-n1
             li.nav-item.dropdown
               a.nav-link.dropdown-toggle.dropdown-indicator(href='JavaScript:void(0)' role="button" data-bs-toggle="dropdown" aria-expanded="false") Home

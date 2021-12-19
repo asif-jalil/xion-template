@@ -1926,18 +1926,62 @@ function initMap() {
 
 var hamburgerInit = function hamburgerInit() {
   var Selector = {
-    HAMBURGER: '.hamburger'
+    HAMBURGER: '.hamburger',
+    NAVBAR_COLLAPSE: '#primaryNavbarCollapse'
   };
-  var hamburgers = Array.from(document.querySelectorAll(Selector.HAMBURGER));
-
-  if (hamburgers.length) {
-    hamburgers.forEach(function (burger) {
-      document.addEventListener('click', function () {
-        burger.classList.toggle('is-active');
-      });
-    });
-  }
+  var hamburger = document.querySelector(Selector.HAMBURGER);
+  var navbarCollapse = document.querySelector(Selector.NAVBAR_COLLAPSE);
+  navbarCollapse.addEventListener('show.bs.collapse', function () {
+    hamburger.classList.add('is-active');
+  });
+  navbarCollapse.addEventListener('hide.bs.collapse', function () {
+    hamburger.classList.remove('is-active');
+  });
 };
+
+function inertiaInit() {
+  var Selector = {
+    DATA_INERTIA: '[data-inertia]'
+  };
+  var DATA_KEY = {
+    INERTIA: 'inertia'
+  };
+  var Events = {
+    SCROLL: 'scroll',
+    RESIZE: 'resize'
+  };
+  var inertiaEls = document.querySelectorAll(Selector.DATA_INERTIA);
+  inertiaEls.forEach(function (el) {
+    var options = utils.getData(el, DATA_KEY.INERTIA);
+    var offsetTop = el.getBoundingClientRect().top;
+    var winHeight = window.innerHeight;
+    var currentPosition = window.pageYOffset;
+    var y = 0;
+    var previousPosition = 0;
+    var controller = {
+      weight: 2,
+      duration: 0.7,
+      ease: 'Power3.easeOut'
+    };
+    Object.assign(controller, options); // eslint-disable-next-line no-param-reassign
+
+    el.style.transform = "translateY(".concat((el.getBoundingClientRect().top - window.pageYOffset) * 100 / winHeight, "px);");
+
+    var inertiaEffect = function inertiaEffect() {
+      currentPosition = window.pageYOffset;
+      y = controller.weight * (offsetTop - currentPosition) * 100 / winHeight;
+      currentPosition === previousPosition || window.gsap.to(el, {
+        duration: controller.duration,
+        y: y,
+        ease: controller.ease
+      });
+      previousPosition = currentPosition;
+    };
+
+    window.addEventListener(Events.SCROLL, inertiaEffect);
+    window.addEventListener(Events.RESIZE, inertiaEffect);
+  });
+}
 /* -------------------------------------------------------------------------- */
 
 /*                                 bigPicture                                 */
@@ -2202,7 +2246,6 @@ var swiperInit = function swiperInit() {
     SLIDE_CHANGE: 'slideChange'
   };
   var swipers = document.querySelectorAll(Selector.DATA_SWIPER);
-  var navbarVerticalToggle = document.querySelector('.navbar-vertical-toggle');
   swipers.forEach(function (swiper) {
     var options = utils.getData(swiper, DATA_KEY.SWIPER);
     var thumbsOptions = options.thumb;
@@ -2237,14 +2280,7 @@ var swiperInit = function swiperInit() {
       thumbs: {
         swiper: thumbsInit
       }
-    }));
-
-    if (navbarVerticalToggle) {
-      navbarVerticalToggle.addEventListener('navbar.vertical.toggle', function () {
-        newSwiper.update();
-      });
-    } //- zanimation effect start
-
+    })); //- zanimation effect start
 
     if (swiper) {
       newSwiper.on(Events.SLIDE_CHANGE, function () {
@@ -2675,4 +2711,5 @@ docReady(lightboxInit);
 docReady(bgPlayerInit);
 docReady(hamburgerInit);
 docReady(zanimationInit);
+docReady(inertiaInit);
 //# sourceMappingURL=theme.js.map

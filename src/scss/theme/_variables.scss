@@ -256,7 +256,7 @@ $table-head-color: $dark !default;
 $table-dark-bg: $gray-1000 !default;
 $table-dark-border-color: lighten($gray-1000, 7.5%) !default;
 $table-striped-order: even !default;
-// $table-accent-bg: $gray-100 !default;
+
 $table-cell-padding-y: 0.75rem !default;
 $table-cell-padding-x: 0.75rem !default;
 $table-group-separator-color: inherit !default;
@@ -268,8 +268,8 @@ $table-group-separator-color: inherit !default;
 //*-----------------------------------------------
 //|   Buttons
 //-----------------------------------------------*/
-$btn-box-shadow: none;
-// $btn-focus-box-shadow: none;
+$btn-box-shadow: 0 0 0 transparent;
+
 $btn-border-radius:           $border-radius;
 $btn-border-radius-sm:        $border-radius;
 $btn-border-radius-lg:        $border-radius;
@@ -316,7 +316,7 @@ $form-check-input-checked-bg-image:       url("data:image/svg+xml,%3csvg xmlns='
 $input-border-color: var(--#{$variable-prefix}input-border-color) !default;
 // $input-placeholder-color: var(--#{$variable-prefix}input-placeholder-color) !default;
 // $input-color: var(--#{$variable-prefix}input-color) !default;
-$input-box-shadow: none;
+$input-box-shadow: 0 0 0 transparent;
 // $form-check-margin-bottom: 0.34375rem !default;
 // $form-label-font-size: $font-size-sm !default;
 // $form-check-input-bg: transparent !default;

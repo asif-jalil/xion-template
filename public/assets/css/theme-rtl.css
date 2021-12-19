@@ -315,7 +315,7 @@
   --elixir-form-file-color: #6a6a6a;
   --elixir-form-file-bg: var(--elixir-100);
   --elixir-form-file-border-color: var(--elixir-input-border-color);
-  --elixir-form-file-box-shadow: none;
+  --elixir-form-file-box-shadow: 0 0 0 transparent;
   --elixir-form-file-button-bg: #f2f2f2;
   --elixir-form-feedback-valid-color: #36b36a;
   --elixir-form-feedback-invalid-color: #b33641;
@@ -2907,8 +2907,8 @@ progress {
   -moz-appearance: none;
   appearance: none;
   border-radius: 0.188rem;
-  -webkit-box-shadow: none;
-  box-shadow: none;
+  -webkit-box-shadow: 0 0 0 transparent;
+  box-shadow: 0 0 0 transparent;
   -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   -o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -2933,8 +2933,8 @@ progress {
   background-color: var(--elixir-white);
   border-color: #959caa;
   outline: 0;
-  -webkit-box-shadow: none, 0 0 0 0.25rem rgba(42, 56, 85, 0.25);
-  box-shadow: none, 0 0 0 0.25rem rgba(42, 56, 85, 0.25);
+  -webkit-box-shadow: 0 0 0 transparent, 0 0 0 0.25rem rgba(42, 56, 85, 0.25);
+  box-shadow: 0 0 0 transparent, 0 0 0 0.25rem rgba(42, 56, 85, 0.25);
 }
 .form-control::-webkit-date-and-time-value {
   height: 1.5em;
@@ -3807,8 +3807,8 @@ textarea.form-control-lg {
   color: #fff;
   background-color: #2A3855;
   border-color: #2A3855;
-  -webkit-box-shadow: none;
-  box-shadow: none;
+  -webkit-box-shadow: 0 0 0 transparent;
+  box-shadow: 0 0 0 transparent;
 }
 .btn-primary:hover {
   color: #fff;
@@ -3819,8 +3819,8 @@ textarea.form-control-lg {
   color: #fff;
   background-color: #243048;
   border-color: #222d44;
-  -webkit-box-shadow: none, 0 0 0 0.25rem rgba(74, 86, 111, 0.5);
-  box-shadow: none, 0 0 0 0.25rem rgba(74, 86, 111, 0.5);
+  -webkit-box-shadow: 0 0 0 transparent, 0 0 0 0.25rem rgba(74, 86, 111, 0.5);
+  box-shadow: 0 0 0 transparent, 0 0 0 0.25rem rgba(74, 86, 111, 0.5);
 }
 .btn-check:checked + .btn-primary, .btn-check:active + .btn-primary, .btn-primary:active, .btn-primary.active, .show > .btn-primary.dropdown-toggle {
   color: #fff;
@@ -3841,8 +3841,8 @@ textarea.form-control-lg {
   color: #fff;
   background-color: #7F7F7F;
   border-color: #7F7F7F;
-  -webkit-box-shadow: none;
-  box-shadow: none;
+  -webkit-box-shadow: 0 0 0 transparent;
+  box-shadow: 0 0 0 transparent;
 }
 .btn-secondary:hover {
   color: #fff;
@@ -3853,8 +3853,8 @@ textarea.form-control-lg {
   color: #fff;
   background-color: #6c6c6c;
   border-color: #666666;
-  -webkit-box-shadow: none, 0 0 0 0.25rem rgba(146, 146, 146, 0.5);
-  box-shadow: none, 0 0 0 0.25rem rgba(146, 146, 146, 0.5);
+  -webkit-box-shadow: 0 0 0 transparent, 0 0 0 0.25rem rgba(146, 146, 146, 0.5);
+  box-shadow: 0 0 0 transparent, 0 0 0 0.25rem rgba(146, 146, 146, 0.5);
 }
 .btn-check:checked + .btn-secondary, .btn-check:active + .btn-secondary, .btn-secondary:active, .btn-secondary.active, .show > .btn-secondary.dropdown-toggle {
   color: #fff;
@@ -3875,8 +3875,8 @@ textarea.form-control-lg {
   color: #fff;
   background-color: #36b36a;
   border-color: #36b36a;
-  -webkit-box-shadow: none;
-  box-shadow: none;
+  -webkit-box-shadow: 0 0 0 transparent;
+  box-shadow: 0 0 0 transparent;
 }
 .btn-success:hover {
   color: #fff;
@@ -3887,8 +3887,8 @@ textarea.form-control-lg {
   color: #fff;
   background-color: #2e985a;
   border-color: #2b8f55;
-  -webkit-box-shadow: none, 0 0 0 0.25rem rgba(84, 190, 128, 0.5);
-  box-shadow: none, 0 0 0 0.25rem rgba(84, 190, 128, 0.5);
+  -webkit-box-shadow: 0 0 0 transparent, 0 0 0 0.25rem rgba(84, 190, 128, 0.5);
+  box-shadow: 0 0 0 transparent, 0 0 0 0.25rem rgba(84, 190, 128, 0.5);
 }
 .btn-check:checked + .btn-success, .btn-check:active + .btn-success, .btn-success:active, .btn-success.active, .show > .btn-success.dropdown-toggle {
   color: #fff;
@@ -3909,8 +3909,8 @@ textarea.form-control-lg {
   color: #fff;
   background-color: #3680b3;
   border-color: #3680b3;
-  -webkit-box-shadow: none;
-  box-shadow: none;
+  -webkit-box-shadow: 0 0 0 transparent;
+  box-shadow: 0 0 0 transparent;
 }
 .btn-info:hover {
   color: #fff;
@@ -3921,8 +3921,8 @@ textarea.form-control-lg {
   color: #fff;
   background-color: #2e6d98;
   border-color: #2b668f;
-  -webkit-box-shadow: none, 0 0 0 0.25rem rgba(84, 147, 190, 0.5);
-  box-shadow: none, 0 0 0 0.25rem rgba(84, 147, 190, 0.5);
+  -webkit-box-shadow: 0 0 0 transparent, 0 0 0 0.25rem rgba(84, 147, 190, 0.5);
+  box-shadow: 0 0 0 transparent, 0 0 0 0.25rem rgba(84, 147, 190, 0.5);
 }
 .btn-check:checked + .btn-info, .btn-check:active + .btn-info, .btn-info:active, .btn-info.active, .show > .btn-info.dropdown-toggle {
   color: #fff;
@@ -3943,8 +3943,8 @@ textarea.form-control-lg {
   color: #000;
   background-color: #FDD428;
   border-color: #FDD428;
-  -webkit-box-shadow: none;
-  box-shadow: none;
+  -webkit-box-shadow: 0 0 0 transparent;
+  box-shadow: 0 0 0 transparent;
 }
 .btn-warning:hover {
   color: #000;
@@ -3955,8 +3955,8 @@ textarea.form-control-lg {
   color: #000;
   background-color: #fdda48;
   border-color: #fdd83e;
-  -webkit-box-shadow: none, 0 0 0 0.25rem rgba(215, 180, 34, 0.5);
-  box-shadow: none, 0 0 0 0.25rem rgba(215, 180, 34, 0.5);
+  -webkit-box-shadow: 0 0 0 transparent, 0 0 0 0.25rem rgba(215, 180, 34, 0.5);
+  box-shadow: 0 0 0 transparent, 0 0 0 0.25rem rgba(215, 180, 34, 0.5);
 }
 .btn-check:checked + .btn-warning, .btn-check:active + .btn-warning, .btn-warning:active, .btn-warning.active, .show > .btn-warning.dropdown-toggle {
   color: #000;
@@ -3977,8 +3977,8 @@ textarea.form-control-lg {
   color: #fff;
   background-color: #b33641;
   border-color: #b33641;
-  -webkit-box-shadow: none;
-  box-shadow: none;
+  -webkit-box-shadow: 0 0 0 transparent;
+  box-shadow: 0 0 0 transparent;
 }
 .btn-danger:hover {
   color: #fff;
@@ -3989,8 +3989,8 @@ textarea.form-control-lg {
   color: #fff;
   background-color: #982e37;
   border-color: #8f2b34;
-  -webkit-box-shadow: none, 0 0 0 0.25rem rgba(190, 84, 94, 0.5);
-  box-shadow: none, 0 0 0 0.25rem rgba(190, 84, 94, 0.5);
+  -webkit-box-shadow: 0 0 0 transparent, 0 0 0 0.25rem rgba(190, 84, 94, 0.5);
+  box-shadow: 0 0 0 transparent, 0 0 0 0.25rem rgba(190, 84, 94, 0.5);
 }
 .btn-check:checked + .btn-danger, .btn-check:active + .btn-danger, .btn-danger:active, .btn-danger.active, .show > .btn-danger.dropdown-toggle {
   color: #fff;
@@ -4011,8 +4011,8 @@ textarea.form-control-lg {
   color: #000;
   background-color: #fafafa;
   border-color: #fafafa;
-  -webkit-box-shadow: none;
-  box-shadow: none;
+  -webkit-box-shadow: 0 0 0 transparent;
+  box-shadow: 0 0 0 transparent;
 }
 .btn-light:hover {
   color: #000;
@@ -4023,8 +4023,8 @@ textarea.form-control-lg {
   color: #000;
   background-color: #fbfbfb;
   border-color: #fbfbfb;
-  -webkit-box-shadow: none, 0 0 0 0.25rem rgba(213, 213, 213, 0.5);
-  box-shadow: none, 0 0 0 0.25rem rgba(213, 213, 213, 0.5);
+  -webkit-box-shadow: 0 0 0 transparent, 0 0 0 0.25rem rgba(213, 213, 213, 0.5);
+  box-shadow: 0 0 0 transparent, 0 0 0 0.25rem rgba(213, 213, 213, 0.5);
 }
 .btn-check:checked + .btn-light, .btn-check:active + .btn-light, .btn-light:active, .btn-light.active, .show > .btn-light.dropdown-toggle {
   color: #000;
@@ -4045,8 +4045,8 @@ textarea.form-control-lg {
   color: #fff;
   background-color: #1f1f1f;
   border-color: #1f1f1f;
-  -webkit-box-shadow: none;
-  box-shadow: none;
+  -webkit-box-shadow: 0 0 0 transparent;
+  box-shadow: 0 0 0 transparent;
 }
 .btn-dark:hover {
   color: #fff;
@@ -4057,8 +4057,8 @@ textarea.form-control-lg {
   color: #fff;
   background-color: #1a1a1a;
   border-color: #191919;
-  -webkit-box-shadow: none, 0 0 0 0.25rem rgba(65, 65, 65, 0.5);
-  box-shadow: none, 0 0 0 0.25rem rgba(65, 65, 65, 0.5);
+  -webkit-box-shadow: 0 0 0 transparent, 0 0 0 0.25rem rgba(65, 65, 65, 0.5);
+  box-shadow: 0 0 0 transparent, 0 0 0 0.25rem rgba(65, 65, 65, 0.5);
 }
 .btn-check:checked + .btn-dark, .btn-check:active + .btn-dark, .btn-dark:active, .btn-dark.active, .show > .btn-dark.dropdown-toggle {
   color: #fff;
@@ -18066,8 +18066,8 @@ ol {
   color: #fff;
   background-color: #3b5998;
   border-color: #3b5998;
-  -webkit-box-shadow: none;
-  box-shadow: none;
+  -webkit-box-shadow: 0 0 0 transparent;
+  box-shadow: 0 0 0 transparent;
 }
 .btn-facebook:hover {
   color: #fff;
@@ -18078,8 +18078,8 @@ ol {
   color: #fff;
   background-color: #324c81;
   border-color: #2f477a;
-  -webkit-box-shadow: none, 0 0 0 0.25rem rgba(88, 114, 167, 0.5);
-  box-shadow: none, 0 0 0 0.25rem rgba(88, 114, 167, 0.5);
+  -webkit-box-shadow: 0 0 0 transparent, 0 0 0 0.25rem rgba(88, 114, 167, 0.5);
+  box-shadow: 0 0 0 transparent, 0 0 0 0.25rem rgba(88, 114, 167, 0.5);
 }
 .btn-check:checked + .btn-facebook, .btn-check:active + .btn-facebook, .btn-facebook:active, .btn-facebook.active, .show > .btn-facebook.dropdown-toggle {
   color: #fff;
@@ -18100,8 +18100,8 @@ ol {
   color: #fff;
   background-color: #1da1f2;
   border-color: #1da1f2;
-  -webkit-box-shadow: none;
-  box-shadow: none;
+  -webkit-box-shadow: 0 0 0 transparent;
+  box-shadow: 0 0 0 transparent;
 }
 .btn-twitter:hover {
   color: #fff;
@@ -18112,8 +18112,8 @@ ol {
   color: #fff;
   background-color: #1989ce;
   border-color: #1781c2;
-  -webkit-box-shadow: none, 0 0 0 0.25rem rgba(63, 175, 244, 0.5);
-  box-shadow: none, 0 0 0 0.25rem rgba(63, 175, 244, 0.5);
+  -webkit-box-shadow: 0 0 0 transparent, 0 0 0 0.25rem rgba(63, 175, 244, 0.5);
+  box-shadow: 0 0 0 transparent, 0 0 0 0.25rem rgba(63, 175, 244, 0.5);
 }
 .btn-check:checked + .btn-twitter, .btn-check:active + .btn-twitter, .btn-twitter:active, .btn-twitter.active, .show > .btn-twitter.dropdown-toggle {
   color: #fff;
@@ -18134,8 +18134,8 @@ ol {
   color: #fff;
   background-color: #db4437;
   border-color: #db4437;
-  -webkit-box-shadow: none;
-  box-shadow: none;
+  -webkit-box-shadow: 0 0 0 transparent;
+  box-shadow: 0 0 0 transparent;
 }
 .btn-google-plus:hover {
   color: #fff;
@@ -18146,8 +18146,8 @@ ol {
   color: #fff;
   background-color: #ba3a2f;
   border-color: #af362c;
-  -webkit-box-shadow: none, 0 0 0 0.25rem rgba(224, 96, 85, 0.5);
-  box-shadow: none, 0 0 0 0.25rem rgba(224, 96, 85, 0.5);
+  -webkit-box-shadow: 0 0 0 transparent, 0 0 0 0.25rem rgba(224, 96, 85, 0.5);
+  box-shadow: 0 0 0 transparent, 0 0 0 0.25rem rgba(224, 96, 85, 0.5);
 }
 .btn-check:checked + .btn-google-plus, .btn-check:active + .btn-google-plus, .btn-google-plus:active, .btn-google-plus.active, .show > .btn-google-plus.dropdown-toggle {
   color: #fff;
@@ -18168,8 +18168,8 @@ ol {
   color: #fff;
   background-color: #24292e;
   border-color: #24292e;
-  -webkit-box-shadow: none;
-  box-shadow: none;
+  -webkit-box-shadow: 0 0 0 transparent;
+  box-shadow: 0 0 0 transparent;
 }
 .btn-github:hover {
   color: #fff;
@@ -18180,8 +18180,8 @@ ol {
   color: #fff;
   background-color: #1f2327;
   border-color: #1d2125;
-  -webkit-box-shadow: none, 0 0 0 0.25rem rgba(69, 73, 77, 0.5);
-  box-shadow: none, 0 0 0 0.25rem rgba(69, 73, 77, 0.5);
+  -webkit-box-shadow: 0 0 0 transparent, 0 0 0 0.25rem rgba(69, 73, 77, 0.5);
+  box-shadow: 0 0 0 transparent, 0 0 0 0.25rem rgba(69, 73, 77, 0.5);
 }
 .btn-check:checked + .btn-github, .btn-check:active + .btn-github, .btn-github:active, .btn-github.active, .show > .btn-github.dropdown-toggle {
   color: #fff;

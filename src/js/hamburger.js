@@ -4,18 +4,20 @@
 
 const hamburgerInit = () => {
 	const Selector = {
-		HAMBURGER: '.hamburger'
+		HAMBURGER: '.hamburger',
+		NAVBAR_COLLAPSE: '#primaryNavbarCollapse'
 	};
 
-	const hamburgers = Array.from(document.querySelectorAll(Selector.HAMBURGER));
+	const hamburger = document.querySelector(Selector.HAMBURGER);
+	const navbarCollapse = document.querySelector(Selector.NAVBAR_COLLAPSE);
 
-	if (hamburgers.length) {
-		hamburgers.forEach(burger => {
-			document.addEventListener('click', () => {
-				burger.classList.toggle('is-active');
-			});
-		});
-	}
+	navbarCollapse.addEventListener('show.bs.collapse', () => {
+		hamburger.classList.add('is-active');
+	});
+
+	navbarCollapse.addEventListener('hide.bs.collapse', () => {
+		hamburger.classList.remove('is-active');
+	});
 };
 
 export default hamburgerInit;

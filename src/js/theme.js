@@ -21,6 +21,7 @@ import lightboxInit from './lightbox';
 import bgPlayerInit from './bg-player';
 import hamburgerInit from './hamburger';
 import zanimationInit from './zanimation';
+import inertiaInit from './inertia';
 
 /* -------------------------------------------------------------------------- */
 /*                            Theme Initialization                            */
@@ -53,3 +54,4 @@ docReady(lightboxInit);
 docReady(bgPlayerInit);
 docReady(hamburgerInit);
 docReady(zanimationInit);
+docReady(inertiaInit);

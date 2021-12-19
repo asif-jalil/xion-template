@@ -20,7 +20,6 @@ const swiperInit = () => {
 	};
 
 	const swipers = document.querySelectorAll(Selector.DATA_SWIPER);
-	const navbarVerticalToggle = document.querySelector('.navbar-vertical-toggle');
 	swipers.forEach(swiper => {
 		const options = utils.getData(swiper, DATA_KEY.SWIPER);
 		const thumbsOptions = options.thumb;
@@ -61,11 +60,6 @@ const swiperInit = () => {
 				swiper: thumbsInit
 			}
 		});
-		if (navbarVerticalToggle) {
-			navbarVerticalToggle.addEventListener('navbar.vertical.toggle', () => {
-				newSwiper.update();
-			});
-		}
 
 		//- zanimation effect start
 		if (swiper) {

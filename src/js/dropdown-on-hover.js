@@ -7,7 +7,6 @@ const dropdownOnHover = () => {
 
 	if (navbarArea) {
 		navbarArea.forEach(navbarItem => {
-			console.log(navbarItem.dataset['bsToggle']);
 			navbarItem.addEventListener('mouseover', e => {
 				if (e.target.className.includes('dropdown-toggle') && window.innerWidth > 992) {
 					const dropdownInstance = new window.bootstrap.Dropdown(e.target);

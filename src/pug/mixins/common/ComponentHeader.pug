@@ -1,0 +1,7 @@
+mixin ComponentHeader(config) 
+  .row.justify-content-center.text-center&attributes(attributes)
+    .col-10.col-md-6.position-relative
+      h3.fs-2.fs-md-3.fw-bold #{config.title}
+      if config.desc 
+        p.px-lg-4.mt-3 #{config.desc}
+      hr.short(data-zanim-xs!={from:{opacity: 0, width: 0}, to:{opacity: 1, width: "4.20873rem"}, duration:0.8} data-zanim-trigger="scroll")

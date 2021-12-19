@@ -46,5 +46,17 @@
 	"overlayscrollbars": {
 		"src": ["js/OverlayScrollbars.min.js", "css/OverlayScrollbars.min.css"],
 		"dest": "overlayscrollbars"
+	},
+	"bigpicture": {
+		"src": "dist/BigPicture.js",
+		"dest": "bigpicture"
+	},
+	"hamburgers": {
+		"src": "dist/hamburgers.min.css",
+		"dest": "hamburgers"
+	},
+	"imagesloaded": {
+		"src": "imagesloaded.pkgd.min.js",
+		"dest": "imagesloaded"
 	}
 }

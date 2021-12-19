@@ -4,14 +4,28 @@
 .dropdown-menu {
   font-size: map_get($font-sizes, "-1");
   display: block;
-  opacity: 0;
-  visibility: hidden;
+  @include media-breakpoint-up(xs){
+    display: none;
+  }
+
+  @include media-breakpoint-up(lg){
+    opacity: 0;
+    visibility: hidden;
+  }
+
+
   transition: $transition-base;
 }
 
 .dropdown-menu.show{
-  opacity: 1;
-  visibility: visible;
+  @include media-breakpoint-up(xs){
+    display: block;
+  }
+
+  @include media-breakpoint-up(lg){
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
 .dropdown-indicator {
@@ -20,13 +34,14 @@
     content: "";
     display: block;
     position: absolute;
-    right: 7px;
-    top: 47%;
-    height: 0.45rem;
-    width: 0.45rem;
+    right: 9px;
+    top: 46%;
+    height: 0.438rem;
+    width: 0.438rem;
     border: none;
     border-right: 2px solid $primary;
     border-bottom: 2px solid $primary;
+    border-radius: 1px;
     transform: translateY(-50%) rotate(45deg);
     transition: $transition-base;
     transform-origin: center;

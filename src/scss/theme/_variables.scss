@@ -83,7 +83,7 @@ $enable-gradients: false !default;
 $enable-negative-margins: true !default;
 
 
-// $component-active-color: var(--#{$variable-prefix}white) !default;
+$component-active-color: var(--#{$variable-prefix}primary) !default;
 // $component-active-bg: var(--#{$variable-prefix}primary) !default;
 
 //*-----------------------------------------------
@@ -177,7 +177,7 @@ $font-sizes: map-merge(
 );
 
 $font-size-sm: $font-size-base * 0.875 !default;
-$font-size-lg: $font-size-base * 1.2 !default;
+$font-size-lg: $font-size-base * 1.333 !default;
 $font-weight-thin: 100 !default;
 $font-weight-lighter: 200 !default;
 $font-weight-light: 300 !default;
@@ -226,6 +226,14 @@ $text-muted: $gray-500 !default;
 
 $blockquote-font-size: $font-size-lg !default;
 
+$line-height-base:            1.45;
+$line-height-sm:              1.25;
+$line-height-lg:              1.75;
+$line-height-xs:              1.15;
+
+$hr-height: 3px;
+$hr-opacity: 0.8;
+
 //*-----------------------------------------------
 //|   Accordion
 //-----------------------------------------------*/
@@ -248,7 +256,7 @@ $table-head-color: $dark !default;
 $table-dark-bg: $gray-1000 !default;
 $table-dark-border-color: lighten($gray-1000, 7.5%) !default;
 $table-striped-order: even !default;
-// $table-accent-bg: $gray-100 !default;
+
 $table-cell-padding-y: 0.75rem !default;
 $table-cell-padding-x: 0.75rem !default;
 $table-group-separator-color: inherit !default;
@@ -260,8 +268,8 @@ $table-group-separator-color: inherit !default;
 //*-----------------------------------------------
 //|   Buttons
 //-----------------------------------------------*/
-$btn-box-shadow: none;
-// $btn-focus-box-shadow: none;
+$btn-box-shadow: 0 0 0 transparent;
+
 $btn-border-radius:           $border-radius;
 $btn-border-radius-sm:        $border-radius;
 $btn-border-radius-lg:        $border-radius;
@@ -272,6 +280,7 @@ $btn-border-radius-lg:        $border-radius;
 $input-btn-padding-y: $spacer * 0.8 !default;
 $input-btn-padding-x: $spacer * 2.5 !default;
 $input-btn-font-size: map-get($font-sizes,  '-1');
+$input-btn-line-height: 1.5;
 
 $input-btn-padding-y-sm: $spacer * 0.4 !default;
 $input-btn-padding-x-sm: $spacer * 1.2 !default;
@@ -280,6 +289,12 @@ $input-btn-font-size-sm: map-get($font-sizes, '-1');
 $input-btn-padding-y-lg: $spacer * 1.2 !default;
 $input-btn-padding-x-lg: $spacer * 5 !default;
 $input-btn-font-size-lg: $font-size-base;
+
+$input-padding-y: $spacer * 0.375;
+$input-padding-x: $spacer * 0.75;
+
+$input-padding-y-lg: $spacer * 0.5;
+$input-padding-x-lg: $spacer * 0.5;
 
 // $btn-reveal-hover-shadow: 0 0 0 1px rgba(43, 45, 80, 0.1),
 //   0 2px 5px 0 rgba(43, 45, 80, 0.08), 0 1px 1.5px 0 rgba($black, 0.07),
@@ -291,21 +306,27 @@ $btn-font-weight: $font-weight-bold !default;
 //*-----------------------------------------------
 //|   Forms
 //-----------------------------------------------*/
-$input-disabled-bg: var(--#{$variable-prefix}200) !default;
-$input-group-addon-bg: var(--#{$variable-prefix}200) !default;
+$input-padding-y: $spacer * 0.8;
+$input-padding-x: $spacer * 0.8;
+$input-bg: var(--#{$variable-prefix}100);
+$input-focus-bg: var(--#{$variable-prefix}white);
+$form-check-input-checked-bg-image:       url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
+// $input-disabled-bg: var(--#{$variable-prefix}200) !default;
+// $input-group-addon-bg: var(--#{$variable-prefix}200) !default;
 $input-border-color: var(--#{$variable-prefix}input-border-color) !default;
-$input-placeholder-color: var(--#{$variable-prefix}input-placeholder-color) !default;
-$input-color: var(--#{$variable-prefix}input-color) !default;
-$form-check-margin-bottom: 0.34375rem !default;
-$form-label-font-size: $font-size-sm !default;
-$form-check-input-bg: transparent !default;
-$form-check-input-border: 1px solid var(--#{$variable-prefix}form-check-input-border-color) !default;
-$form-switch-color: $gray-500 !default;
-$form-select-disabled-bg: var(--#{$variable-prefix}200) !default;
-$input-bg: var(--#{$variable-prefix}input-bg) !default;
-$input-focus-border-color: var(--#{$variable-prefix}input-focus-border-color) !default;
-$form-file-button-bg: $gray-900 !default;
-$form-file-button-color: $gray-300 !default;
+// $input-placeholder-color: var(--#{$variable-prefix}input-placeholder-color) !default;
+// $input-color: var(--#{$variable-prefix}input-color) !default;
+$input-box-shadow: 0 0 0 transparent;
+// $form-check-margin-bottom: 0.34375rem !default;
+// $form-label-font-size: $font-size-sm !default;
+// $form-check-input-bg: transparent !default;
+// $form-check-input-border: 1px solid var(--#{$variable-prefix}form-check-input-border-color) !default;
+// $form-switch-color: $gray-500 !default;
+// $form-select-disabled-bg: var(--#{$variable-prefix}200) !default;
+// $input-bg: var(--#{$variable-prefix}input-bg) !default;
+// $input-focus-border-color: var(--#{$variable-prefix}input-focus-border-color) !default;
+// $form-file-button-bg: $gray-900 !default;
+// $form-file-button-color: $gray-300 !default;
 
 //*-----------------------------------------------
 //|   Z-index
@@ -401,13 +422,14 @@ $pagination-active-border-color: var(--#{$variable-prefix}pagination-active-bord
 $pagination-disabled-color: var(--#{$variable-prefix}pagination-disabled-color) !default;
 $pagination-disabled-bg: var(--#{$variable-prefix}pagination-disabled-bg) !default;
 $pagination-disabled-border-color: var(--#{$variable-prefix}pagination-disabled-border-color) !default;
+$pagination-border-radius: 0.25rem;
 
 //*-----------------------------------------------
 //|   Cards
 //-----------------------------------------------*/
 // $card-spacer-y: map_get($spacers, 3) !default;
-$card-spacer-y: 1.25rem !default;
-$card-spacer-x: 1.25rem !default;
+$card-spacer-y: map_get($spacers, 4) !default;
+$card-spacer-x: map_get($spacers, 4) !default;
 $card-border-width: 0px !default;
 $card-border-radius: $border-radius-lg !default;
 $card-border-color: var(--#{$variable-prefix}card-border-color) !default;

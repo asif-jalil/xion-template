@@ -1,0 +1,21 @@
+extends ../layouts/LayoutPages
+include ../mixins/pages/about/Company
+include ../mixins/pages/about/FunFact
+include ../mixins/pages/about/Leaders
+include ../mixins/pages/service/Cta
+
+
+append variables 
+  - var pageHeaderConfig = { title: "About" }
+
+
+append mainContent
+  +Company
+
+  +FunFact
+
+  +Section 
+    +ComponentHeader({title: "Global leadership"}).mb-4
+    +Leaders
+
+  +Cta

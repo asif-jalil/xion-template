@@ -1,0 +1,21 @@
+extends layouts/LayoutPages
+include mixins/contact/Address
+include mixins/contact/ContactMap
+include mixins/contact/ContactForm
+include mixins/elements/GoogleMap
+
+prepend scripts
+  script(src!=`https://maps.googleapis.com/maps/api/js?key=${APIGmap}&callback=initMap` async)
+
+append variables 
+  - var pageHeaderConfig = { title: "Contact" }
+
+
+append mainContent
+  +Section.bg-100  
+
+    +Address.mb-4 
+
+    +ContactMap.mb-4
+
+    +ContactForm

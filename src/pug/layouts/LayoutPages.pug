@@ -1,7 +1,11 @@
 extends LayoutTheme
 include ../mixins/common/TopBar
+include ../mixins/common/PreFooter
+include ../mixins/common/Footer
 include ../mixins/navbar/Navbar
 include ../mixins/common/PageHeader
+include ../mixins/common/ComponentHeader
+include ../mixins/common/Member
 
 append variables 
   - var pageHeaderConfig = {}
@@ -16,3 +20,7 @@ block beforeMainContent
   +TopBar
   +Navbar
   +PageHeader(pageHeaderConfig)
+
+block afterMainContent
+  +PreFooter
+  +Footer

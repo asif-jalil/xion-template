@@ -8,11 +8,13 @@ const replace = require('gulp-replace');
 const concat = require('gulp-concat');
 const clone = require('gulp-clone');
 const merge = require('merge-stream');
+const gulpIf = require('gulp-if');
 
 const {
 	paths,
 	baseDir,
-	browserSync: { reload }
+	browserSync: { reload },
+	isProd
 } = require('./utils.js');
 
 /* -------------------------------------------------------------------------- */
@@ -25,7 +27,7 @@ gulp.task('script', () => {
 	const sourceStream = gulp.src(paths.script.src);
 	const jsStream = sourceStream
 		.pipe(clone())
-		.pipe(sourcemaps.init())
+		.pipe(gulpIf(!isProd, sourcemaps.init()))
 		.pipe(eslint({ fix: true }))
 		.pipe(eslint.format())
 		.pipe(eslint.failAfterError())
@@ -36,7 +38,7 @@ gulp.task('script', () => {
 	const compressedStream = jsStream.pipe(clone()).pipe(uglify()).pipe(rename('theme.min.js'));
 
 	return merge(jsStream, compressedStream)
-		.pipe(sourcemaps.write('.'))
+		.pipe(gulpIf(!isProd, sourcemaps.write('.')))
 		.pipe(gulp.dest(`${baseDir}/${paths.script.dest}`))
 		.on('end', () => {
 			reload();

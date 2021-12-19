@@ -8,7 +8,7 @@ const gulpIf = require('gulp-if');
 const clone = require('gulp-clone');
 const merge = require('merge-stream');
 
-const { paths, baseDir, browserSync } = require('./utils.js');
+const { paths, baseDir, browserSync, isProd } = require('./utils.js');
 
 const getOption = outputStyle => ({
 	outputStyle,
@@ -19,7 +19,7 @@ const getOption = outputStyle => ({
 |  SCSS Compile
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
 gulp.task('style', () => {
-	const sourcemapsStream = gulp.src(paths.style.src).pipe(sourcemaps.init());
+	const sourcemapsStream = gulp.src(paths.style.src).pipe(gulpIf(!isProd, sourcemaps.init()));
 
 	const expandedStream = sourcemapsStream
 		.pipe(clone())
@@ -44,7 +44,7 @@ gulp.task('style', () => {
 		.pipe(gulpIf(paths.rtl, rename({ suffix: '-rtl.min' })));
 
 	return merge(expandedStream, ltrCompressedStream, rtlExpandedStream, rtlCompressedStream)
-		.pipe(sourcemaps.write('.'))
+		.pipe(gulpIf(!isProd, sourcemaps.write('.')))
 		.pipe(gulp.dest(`${baseDir}/${paths.style.dest}`))
 		.pipe(browserSync.stream());
 });

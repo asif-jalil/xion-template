@@ -17,6 +17,11 @@ import cookieNoticeInit from './cookie-notice';
 import dropdownOnHover from './dropdown-on-hover';
 import scrollbarInit from './scrollbar';
 import dropdownMenuInit from './dropdown-menu';
+import lightboxInit from './lightbox';
+import bgPlayerInit from './bg-player';
+import hamburgerInit from './hamburger';
+import zanimationInit from './zanimation';
+import inertiaInit from './inertia';
 
 /* -------------------------------------------------------------------------- */
 /*                            Theme Initialization                            */
@@ -45,3 +50,8 @@ docReady(dropdownOnHover);
 docReady(scrollbarInit);
 
 docReady(dropdownMenuInit);
+docReady(lightboxInit);
+docReady(bgPlayerInit);
+docReady(hamburgerInit);
+docReady(zanimationInit);
+docReady(inertiaInit);

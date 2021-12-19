@@ -38,6 +38,10 @@ var docReady = function docReady(fn) {
   }
 };
 
+var isRTL = function isRTL() {
+  return document.querySelector('html').getAttribute('dir') === 'rtl';
+};
+
 var resize = function resize(fn) {
   return window.addEventListener('resize', fn);
 };
@@ -159,6 +163,19 @@ function isScrolledIntoView(el) {
   return vertInView && horInView;
 }
 
+var isElementIntoView = function isElementIntoView(el) {
+  var position = el.getBoundingClientRect(); // checking whether fully visible
+
+  if (position.top >= 0 && position.bottom <= window.innerHeight) {
+    return true;
+  } // checking for partial visibility
+
+
+  if (position.top < window.innerHeight && position.bottom >= 0) {
+    return true;
+  }
+};
+
 var breakpoints = {
   xs: 0,
   sm: 576,
@@ -179,6 +196,26 @@ var getBreakpoint = function getBreakpoint(el) {
   }
 
   return breakpoint;
+};
+
+var getCurrentScreenBreakpoint = function getCurrentScreenBreakpoint() {
+  var currentBreakpoint = '';
+
+  if (window.innerWidth >= breakpoints.xl) {
+    currentBreakpoint = 'xl';
+  } else if (window.innerWidth >= breakpoints.lg) {
+    currentBreakpoint = 'lg';
+  } else if (window.innerWidth >= breakpoints.md) {
+    currentBreakpoint = 'md';
+  } else {
+    currentBreakpoint = 'sm';
+  }
+
+  var breakpointStartVal = breakpoints[currentBreakpoint];
+  return {
+    currentBreakpoint: currentBreakpoint,
+    breakpointStartVal: breakpointStartVal
+  };
 };
 /* --------------------------------- Cookie --------------------------------- */
 
@@ -278,6 +315,8 @@ var getRandomNumber = function getRandomNumber(min, max) {
 
 var utils = {
   docReady: docReady,
+  breakpoints: breakpoints,
+  isRTL: isRTL,
   resize: resize,
   isIterableArray: isIterableArray,
   camelize: camelize,
@@ -292,7 +331,9 @@ var utils = {
   getGrays: getGrays,
   getOffset: getOffset,
   isScrolledIntoView: isScrolledIntoView,
+  isElementIntoView: isElementIntoView,
   getBreakpoint: getBreakpoint,
+  getCurrentScreenBreakpoint: getCurrentScreenBreakpoint,
   setCookie: setCookie,
   getCookie: getCookie,
   newChart: newChart,
@@ -428,11 +469,132 @@ anchors.options = {
   icon: '#'
 };
 anchors.add('[data-anchor]');
+/* --------------------------------------------------------------------------
+|                                 bg player
+--------------------------------------------------------------------------- */
+
+var bgPlayerInit = function bgPlayerInit() {
+  var Selector = {
+    DATA_YOUTUBE_EMBED: '[data-youtube-embed]',
+    YT_VIDEO: '.yt-video'
+  };
+  var DATA_KEY = {
+    YOUTUBE_EMBED: 'youtube-embed'
+  };
+  var ClassName = {
+    LOADED: 'loaded'
+  };
+  var Events = {
+    SCROLL: 'scroll',
+    LOADING: 'loading',
+    DOM_CONTENT_LOADED: 'DOMContentLoaded'
+  };
+  var youtubeEmbedElements = document.querySelectorAll(Selector.DATA_YOUTUBE_EMBED);
+
+  var loadVideo = function loadVideo() {
+    function setupPlayer() {
+      window.YT.ready(function () {
+        youtubeEmbedElements.forEach(function (youtubeEmbedElement) {
+          var userOptions = utils.getData(youtubeEmbedElement, DATA_KEY.YOUTUBE_EMBED);
+          var defaultOptions = {
+            videoId: 'hLpy-DRuiz0',
+            startSeconds: 1,
+            endSeconds: 50
+          };
+
+          var options = window._.merge(defaultOptions, userOptions);
+
+          var youTubePlayer = function youTubePlayer() {
+            // eslint-disable-next-line
+            new YT.Player(youtubeEmbedElement, {
+              videoId: options.videoId,
+              playerVars: {
+                autoplay: 1,
+                disablekb: 1,
+                controls: 0,
+                modestbranding: 1,
+                // Hide the Youtube Logo
+                loop: 1,
+                fs: 0,
+                enablejsapi: 0,
+                start: options === null || options === void 0 ? void 0 : options.startSeconds,
+                end: options === null || options === void 0 ? void 0 : options.endSeconds
+              },
+              events: {
+                onReady: function onReady(e) {
+                  e.target.mute();
+                  e.target.playVideo();
+                },
+                onStateChange: function onStateChange(e) {
+                  if (e.data === window.YT.PlayerState.PLAYING) {
+                    document.querySelectorAll(Selector.DATA_YOUTUBE_EMBED).forEach(function (embedElement) {
+                      embedElement.classList.add(ClassName.LOADED);
+                    });
+                  }
+
+                  if (e.data === window.YT.PlayerState.PAUSED) {
+                    e.target.playVideo();
+                  }
+
+                  if (e.data === window.YT.PlayerState.ENDED) {
+                    // Loop from starting point
+                    e.target.seekTo(options.startSeconds);
+                  }
+                }
+              }
+            });
+          };
+
+          youTubePlayer();
+        });
+      });
+    }
+
+    var tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    tag.onload = setupPlayer;
+  };
+
+  if (document.readyState !== Events.LOADING) {
+    loadVideo();
+  } else {
+    document.addEventListener(Events.DOM_CONTENT_LOADED, function () {
+      return loadVideo();
+    });
+  }
+  /* --------------------------------------------------------------------------
+   |                                 Adjust BG Ratio
+   --------------------------------------------------------------------------- */
+
+
+  var adjustBackgroundRatio = function adjustBackgroundRatio() {
+    var ytElements = document.querySelectorAll(Selector.YT_VIDEO);
+    ytElements.forEach(function (ytEl) {
+      var ytElement = ytEl;
+      var width = ytElement.parentElement.offsetWidth + 200;
+      var height = width * 9 / 16;
+      var minHeight = ytElement.parentElement.offsetHeight + 112;
+      var minWidth = minHeight * 16 / 9;
+      ytElement.style.width = "".concat(width, "px");
+      ytElement.style.height = "".concat(height, "px");
+      ytElement.style.minHeight = "".concat(minHeight, "px");
+      ytElement.style.minWidth = "".concat(minWidth, "px");
+    });
+  };
+
+  adjustBackgroundRatio();
+  document.addEventListener(Events.SCROLL, function () {
+    return adjustBackgroundRatio();
+  });
+};
 /* -------------------------------------------------------------------------- */
 
 /*                              Config                                        */
 
 /* -------------------------------------------------------------------------- */
+
 
 var CONFIG = {
   isNavbarVerticalCollapsed: false,
@@ -441,24 +603,21 @@ var CONFIG = {
   isFluid: false,
   navbarStyle: 'transparent',
   navbarPosition: 'vertical'
-};
-Object.keys(CONFIG).forEach(function (key) {
-  if (localStorage.getItem(key) === null) {
-    localStorage.setItem(key, CONFIG[key]);
-  }
-});
+}; // Object.keys(CONFIG).forEach(key => {
+//   if (localStorage.getItem(key) === null) {
+//     localStorage.setItem(key, CONFIG[key]);
+//   }
+// });
+// if (!!JSON.parse(localStorage.getItem('isNavbarVerticalCollapsed'))) {
+//   document.documentElement.classList.add('navbar-vertical-collapsed');
+// }
+// if (localStorage.getItem('theme') === 'dark') {
+//   document.documentElement.classList.add('dark');
+// }
 
-if (JSON.parse(localStorage.getItem('isNavbarVerticalCollapsed'))) {
-  document.documentElement.classList.add('navbar-vertical-collapsed');
-}
-
-if (localStorage.getItem('theme') === 'dark') {
-  document.documentElement.classList.add('dark');
-}
 /*-----------------------------------------------
 |   Cookie notice
 -----------------------------------------------*/
-
 
 var cookieNoticeInit = function cookieNoticeInit() {
   var Selector = {
@@ -631,7 +790,6 @@ var dropdownOnHover = function dropdownOnHover() {
 
   if (navbarArea) {
     navbarArea.forEach(function (navbarItem) {
-      console.log(navbarItem.dataset.bsToggle);
       navbarItem.addEventListener('mouseover', function (e) {
         if (e.target.className.includes('dropdown-toggle') && window.innerWidth > 992) {
           var dropdownInstance = new window.bootstrap.Dropdown(e.target);
@@ -1761,6 +1919,93 @@ function initMap() {
     });
   }
 }
+/*-----------------------------------------------
+|   Hamburger
+-----------------------------------------------*/
+
+
+var hamburgerInit = function hamburgerInit() {
+  var Selector = {
+    HAMBURGER: '.hamburger',
+    NAVBAR_COLLAPSE: '#primaryNavbarCollapse'
+  };
+  var hamburger = document.querySelector(Selector.HAMBURGER);
+  var navbarCollapse = document.querySelector(Selector.NAVBAR_COLLAPSE);
+  navbarCollapse.addEventListener('show.bs.collapse', function () {
+    hamburger.classList.add('is-active');
+  });
+  navbarCollapse.addEventListener('hide.bs.collapse', function () {
+    hamburger.classList.remove('is-active');
+  });
+};
+
+function inertiaInit() {
+  var Selector = {
+    DATA_INERTIA: '[data-inertia]'
+  };
+  var DATA_KEY = {
+    INERTIA: 'inertia'
+  };
+  var Events = {
+    SCROLL: 'scroll',
+    RESIZE: 'resize'
+  };
+  var inertiaEls = document.querySelectorAll(Selector.DATA_INERTIA);
+  inertiaEls.forEach(function (el) {
+    var options = utils.getData(el, DATA_KEY.INERTIA);
+    var offsetTop = el.getBoundingClientRect().top;
+    var winHeight = window.innerHeight;
+    var currentPosition = window.pageYOffset;
+    var y = 0;
+    var previousPosition = 0;
+    var controller = {
+      weight: 2,
+      duration: 0.7,
+      ease: 'Power3.easeOut'
+    };
+    Object.assign(controller, options); // eslint-disable-next-line no-param-reassign
+
+    el.style.transform = "translateY(".concat((el.getBoundingClientRect().top - window.pageYOffset) * 100 / winHeight, "px);");
+
+    var inertiaEffect = function inertiaEffect() {
+      currentPosition = window.pageYOffset;
+      y = controller.weight * (offsetTop - currentPosition) * 100 / winHeight;
+      currentPosition === previousPosition || window.gsap.to(el, {
+        duration: controller.duration,
+        y: y,
+        ease: controller.ease
+      });
+      previousPosition = currentPosition;
+    };
+
+    window.addEventListener(Events.SCROLL, inertiaEffect);
+    window.addEventListener(Events.RESIZE, inertiaEffect);
+  });
+}
+/* -------------------------------------------------------------------------- */
+
+/*                                 bigPicture                                 */
+
+/* -------------------------------------------------------------------------- */
+
+
+var lightboxInit = function lightboxInit() {
+  if (window.BigPicture) {
+    var bpItems = document.querySelectorAll('[data-bigpicture]');
+    bpItems.forEach(function (bpItem) {
+      var userOptions = utils.getData(bpItem, 'bigpicture');
+      var defaultOptions = {
+        el: bpItem
+      };
+
+      var options = window._.merge(defaultOptions, userOptions);
+
+      bpItem.addEventListener('click', function () {
+        window.BigPicture(options);
+      });
+    });
+  }
+};
 /* -------------------------------------------------------------------------- */
 
 /*                         Navbar Darken on scroll                        */
@@ -1986,21 +2231,34 @@ var scrollbarInit = function scrollbarInit() {
 
 
 var swiperInit = function swiperInit() {
-  var swipers = document.querySelectorAll('[data-swiper]');
-  var navbarVerticalToggle = document.querySelector('.navbar-vertical-toggle');
+  var Selector = {
+    DATA_SWIPER: '[data-swiper]',
+    DATA_ZANIM_TIMELINE: '[data-zanim-timeline]',
+    IMG: 'img',
+    SWIPER_NAV: '.swiper-nav',
+    SWIPER_BUTTON_NEXT: '.swiper-button-next',
+    SWIPER_BUTTON_PREV: '.swiper-button-prev'
+  };
+  var DATA_KEY = {
+    SWIPER: 'swiper'
+  };
+  var Events = {
+    SLIDE_CHANGE: 'slideChange'
+  };
+  var swipers = document.querySelectorAll(Selector.DATA_SWIPER);
   swipers.forEach(function (swiper) {
-    var options = utils.getData(swiper, 'swiper');
+    var options = utils.getData(swiper, DATA_KEY.SWIPER);
     var thumbsOptions = options.thumb;
     var thumbsInit;
 
     if (thumbsOptions) {
-      var thumbImages = swiper.querySelectorAll('img');
+      var thumbImages = swiper.querySelectorAll(Selector.IMG);
       var slides = '';
       thumbImages.forEach(function (img) {
         slides += "\n          <div class='swiper-slide '>\n            <img class='img-fluid rounded mt-1' src=".concat(img.src, " alt=''/>\n          </div>\n        ");
       });
       var thumbs = document.createElement('div');
-      thumbs.setAttribute('class', 'swiper-container thumb');
+      thumbs.setAttribute('class', 'swiper thumb');
       thumbs.innerHTML = "<div class='swiper-wrapper'>".concat(slides, "</div>");
 
       if (thumbsOptions.parent) {
@@ -2013,7 +2271,7 @@ var swiperInit = function swiperInit() {
       thumbsInit = new window.Swiper(thumbs, thumbsOptions);
     }
 
-    var swiperNav = swiper.querySelector('.swiper-nav');
+    var swiperNav = swiper.querySelector(Selector.SWIPER_NAV);
     var newSwiper = new window.Swiper(swiper, _objectSpread(_objectSpread({}, options), {}, {
       navigation: {
         nextEl: swiperNav === null || swiperNav === void 0 ? void 0 : swiperNav.querySelector('.swiper-button-next'),
@@ -2022,13 +2280,21 @@ var swiperInit = function swiperInit() {
       thumbs: {
         swiper: thumbsInit
       }
-    }));
+    })); //- zanimation effect start
 
-    if (navbarVerticalToggle) {
-      navbarVerticalToggle.addEventListener('navbar.vertical.toggle', function () {
-        newSwiper.update();
+    if (swiper) {
+      newSwiper.on(Events.SLIDE_CHANGE, function () {
+        var timelineElements = swiper.querySelectorAll(Selector.DATA_ZANIM_TIMELINE);
+        timelineElements.forEach(function (el) {
+          window.zanimation(el, function (animation) {
+            setTimeout(function () {
+              animation.play();
+            }, 800);
+          });
+        });
       });
-    }
+    } //- zanimation effect end
+
   });
 };
 /* -------------------------------------------------------------------------- */
@@ -2088,12 +2354,340 @@ var typedTextInit = function typedTextInit() {
     });
   }
 };
+/*-----------------------------------------------
+|                 Zanimation
+-----------------------------------------------*/
+
+/*
+global CustomEase, gsap
+*/
+
+
+CustomEase.create('CubicBezier', '.77,0,.18,1');
+/*-----------------------------------------------
+|   Global Functions
+-----------------------------------------------*/
+
+var filterBlur = function filterBlur() {
+  var blur = 'blur(5px)';
+  var isIpadIphoneMacFirefox = (window.is.ios() || window.is.mac()) && window.is.firefox();
+
+  if (isIpadIphoneMacFirefox) {
+    blur = 'blur(0px)';
+  }
+
+  return blur;
+};
+
+var zanimationEffects = {
+  "default": {
+    from: {
+      opacity: 0,
+      y: 70
+    },
+    to: {
+      opacity: 1,
+      y: 0
+    },
+    ease: 'CubicBezier',
+    duration: 0.8,
+    delay: 0
+  },
+  'slide-down': {
+    from: {
+      opacity: 0,
+      y: -70
+    },
+    to: {
+      opacity: 1,
+      y: 0
+    },
+    ease: 'CubicBezier',
+    duration: 0.8,
+    delay: 0
+  },
+  'slide-left': {
+    from: {
+      opacity: 0,
+      x: 70
+    },
+    to: {
+      opacity: 1,
+      x: 0
+    },
+    ease: 'CubicBezier',
+    duration: 0.8,
+    delay: 0
+  },
+  'slide-right': {
+    from: {
+      opacity: 0,
+      x: -70
+    },
+    to: {
+      opacity: 1,
+      x: 0
+    },
+    ease: 'CubicBezier',
+    duration: 0.8,
+    delay: 0
+  },
+  'zoom-in': {
+    from: {
+      scale: 0.9,
+      opacity: 0,
+      filter: filterBlur()
+    },
+    to: {
+      scale: 1,
+      opacity: 1,
+      filter: 'blur(0px)'
+    },
+    delay: 0,
+    ease: 'CubicBezier',
+    duration: 0.8
+  },
+  'zoom-out': {
+    from: {
+      scale: 1.1,
+      opacity: 1,
+      filter: filterBlur()
+    },
+    to: {
+      scale: 1,
+      opacity: 1,
+      filter: 'blur(0px)'
+    },
+    delay: 0,
+    ease: 'CubicBezier',
+    duration: 0.8
+  },
+  'zoom-out-slide-right': {
+    from: {
+      scale: 1.1,
+      opacity: 1,
+      x: -70,
+      filter: filterBlur()
+    },
+    to: {
+      scale: 1,
+      opacity: 1,
+      x: 0,
+      filter: 'blur(0px)'
+    },
+    delay: 0,
+    ease: 'CubicBezier',
+    duration: 0.8
+  },
+  'zoom-out-slide-left': {
+    from: {
+      scale: 1.1,
+      opacity: 1,
+      x: 70,
+      filter: filterBlur()
+    },
+    to: {
+      scale: 1,
+      opacity: 1,
+      x: 0,
+      filter: 'blur(0px)'
+    },
+    delay: 0,
+    ease: 'CubicBezier',
+    duration: 0.8
+  },
+  'blur-in': {
+    from: {
+      opacity: 0,
+      filter: filterBlur()
+    },
+    to: {
+      opacity: 1,
+      filter: 'blur(0px)'
+    },
+    delay: 0,
+    ease: 'CubicBezier',
+    duration: 0.8
+  }
+};
+
+if (utils.isRTL()) {
+  Object.keys(zanimationEffects).forEach(function (key) {
+    if (zanimationEffects[key].from.x) {
+      zanimationEffects[key].from.x = -zanimationEffects[key].from.x;
+    }
+  });
+}
+
+var zanimation = function zanimation(el, callback) {
+  var Selector = {
+    DATA_ZANIM_TIMELINE: '[data-zanim-timeline]',
+    DATA_KEYS: '[data-zanim-xs], [data-zanim-sm], [data-zanim-md], [data-zanim-lg], [data-zanim-xl]'
+  };
+  var DATA_KEY = {
+    DATA_ZANIM_TRIGGER: 'data-zanim-trigger'
+  };
+  /*-----------------------------------------------
+   |   Get Controller
+   -----------------------------------------------*/
+
+  var controllerZanim;
+  var currentBreakpointName = utils.getCurrentScreenBreakpoint().currentBreakpoint;
+  var currentBreakpointVal = utils.getCurrentScreenBreakpoint().breakpointStartVal;
+
+  var getController = function getController(element) {
+    var options = {};
+    var controller = {};
+
+    if (element.hasAttribute("data-zanim-".concat(currentBreakpointName))) {
+      controllerZanim = "zanim-".concat(currentBreakpointName);
+    } else {
+      /*-----------------------------------------------
+         |   Set the mobile first Animation
+         -----------------------------------------------*/
+      var animationBreakpoints = [];
+      var attributes = element.getAttributeNames();
+      attributes.forEach(function (attribute) {
+        if (attribute !== DATA_KEY.DATA_ZANIM_TRIGGER && attribute.startsWith('data-zanim-')) {
+          var breakPointName = attribute.split('data-zanim-')[1];
+
+          if (utils.breakpoints[breakPointName] < currentBreakpointVal) {
+            animationBreakpoints.push({
+              name: breakPointName,
+              size: utils.breakpoints[breakPointName]
+            });
+          }
+        }
+      });
+      controllerZanim = undefined;
+
+      if (animationBreakpoints.length !== 0) {
+        animationBreakpoints = animationBreakpoints.sort(function (a, b) {
+          return a.size - b.size;
+        });
+        var activeBreakpoint = animationBreakpoints.pop();
+        controllerZanim = "zanim-".concat(activeBreakpoint.name);
+      }
+    }
+
+    var userOptions = utils.getData(element, controllerZanim);
+    controller = window._.merge(options, userOptions);
+
+    if (!(controllerZanim === undefined)) {
+      if (userOptions.animation) {
+        options = zanimationEffects[userOptions.animation];
+      } else {
+        options = zanimationEffects["default"];
+      }
+    }
+
+    if (controllerZanim === undefined) {
+      options = {
+        delay: 0,
+        duration: 0,
+        ease: 'Expo.easeOut',
+        from: {},
+        to: {}
+      };
+    }
+    /*-----------------------------------------------
+      |   populating the controller
+      -----------------------------------------------*/
+
+
+    controller.delay || (controller.delay = options.delay);
+    controller.duration || (controller.duration = options.duration);
+    controller.from || (controller.from = options.from);
+    controller.to || (controller.to = options.to);
+
+    if (controller.ease) {
+      controller.to.ease = controller.ease;
+    } else {
+      controller.to.ease = options.ease;
+    }
+
+    return controller;
+  };
+  /*-----------------------------------------------
+   |   End of Get Controller
+   -----------------------------------------------*/
+
+  /*-----------------------------------------------
+   |   For Timeline
+   -----------------------------------------------*/
+
+
+  var zanimTimeline = el.hasAttribute('data-zanim-timeline');
+
+  if (zanimTimeline) {
+    var timelineOption = utils.getData(el, 'zanim-timeline');
+    var timeline = gsap.timeline(timelineOption);
+    var timelineElements = el.querySelectorAll(Selector.DATA_KEYS);
+    timelineElements.forEach(function (timelineEl) {
+      var controller = getController(timelineEl);
+      timeline.fromTo(timelineEl, controller.duration, controller.from, controller.to, controller.delay).pause();
+      window.imagesLoaded(timelineEl, callback(timeline));
+    });
+  } else if (!el.closest(Selector.DATA_ZANIM_TIMELINE)) {
+    /*-----------------------------------------------
+      |   For single elements outside timeline
+      -----------------------------------------------*/
+    var controller = getController(el);
+    callback(gsap.fromTo(el, controller.duration, controller.from, controller.to).delay(controller.delay).pause());
+  }
+
+  callback(gsap.timeline());
+};
+/*-----------------------------------------------
+|    Zanimation Init
+-----------------------------------------------*/
+
+
+var zanimationInit = function zanimationInit() {
+  var Selector = {
+    DATA_ZANIM_TRIGGER: '[data-zanim-trigger]',
+    DATA_ZANIM_REPEAT: '[zanim-repeat]'
+  };
+  var DATA_KEY = {
+    DATA_ZANIM_TRIGGER: 'data-zanim-trigger'
+  };
+  var Events = {
+    SCROLL: 'scroll'
+  };
+  /*-----------------------------------------------
+   |   Triggering zanimation when the element enters in the view
+   -----------------------------------------------*/
+
+  var triggerZanimation = function triggerZanimation() {
+    var triggerElement = document.querySelectorAll(Selector.DATA_ZANIM_TRIGGER);
+    triggerElement.forEach(function (el) {
+      if (utils.isElementIntoView(el) && el.hasAttribute(DATA_KEY.DATA_ZANIM_TRIGGER)) {
+        zanimation(el, function (animation) {
+          return animation.play();
+        });
+
+        if (!document.querySelector(Selector.DATA_ZANIM_REPEAT)) {
+          el.removeAttribute(DATA_KEY.DATA_ZANIM_TRIGGER);
+        }
+      }
+    });
+  };
+
+  triggerZanimation();
+  window.addEventListener(Events.SCROLL, function () {
+    return triggerZanimation();
+  });
+};
+
+var gsapAnimation = {
+  zanimationInit: zanimationInit,
+  zanimation: zanimation
+};
 /* -------------------------------------------------------------------------- */
 
 /*                            Theme Initialization                            */
 
 /* -------------------------------------------------------------------------- */
-
 
 docReady(detectorInit);
 docReady(tooltipInit);
@@ -2113,4 +2707,9 @@ docReady(cookieNoticeInit);
 docReady(dropdownOnHover);
 docReady(scrollbarInit);
 docReady(dropdownMenuInit);
+docReady(lightboxInit);
+docReady(bgPlayerInit);
+docReady(hamburgerInit);
+docReady(zanimationInit);
+docReady(inertiaInit);
 //# sourceMappingURL=theme.js.map

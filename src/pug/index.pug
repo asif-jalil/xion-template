@@ -1,5 +1,7 @@
-extends layouts/LayoutTheme
+extends layouts/LayoutHomes
 include mixins/homes/SliderHeader
+
+
 
 prepend styles
   link(href=`${CWD}vendors/swiper/swiper-bundle.min.css`, rel='stylesheet')
@@ -7,5 +9,5 @@ prepend styles
 prepend scripts
   script(src=`${CWD}vendors/swiper/swiper-bundle.min.js`)
 
-append mainContent
+append homeBanner
   +SliderHeader

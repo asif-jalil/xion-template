@@ -1,0 +1,13 @@
+extends ../layouts/LayoutHomes
+include ../mixins/homes/SliderClassic
+
+
+
+prepend styles
+  link(href=`${CWD}vendors/swiper/swiper-bundle.min.css`, rel='stylesheet')
+
+prepend scripts
+  script(src=`${CWD}vendors/swiper/swiper-bundle.min.js`)
+
+append homeBanner
+  +SliderClassic
